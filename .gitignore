@@ -13,7 +13,13 @@ next-env.d.ts.bak
 
 # dev-only artifacts
 verify.py
+verify_*.py
 skills-lock.json
 .agents/
 .claude/skills/
+
+# reference / auto-generated
+prueba/
+AGENTS.md
+CLAUDE.md
 

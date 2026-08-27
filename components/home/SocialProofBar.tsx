@@ -1,8 +1,8 @@
 import { Reveal } from "../Reveal";
 
 const stats = [
-  { number: "{{STAT_PACIENTES}}", label: "Pacientes atendidos" },
-  { number: "{{STAT_ANIOS}}", label: "Años de experiencia" },
+  { number: "200+", label: "Pacientes atendidos" },
+  { number: "5+", label: "Años de experiencia" },
   { number: "6+", label: "Terapias disponibles" },
   { number: "5.0", label: "En reseñas de Google" },
 ];

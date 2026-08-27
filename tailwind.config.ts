@@ -29,6 +29,10 @@ const config: Config = {
           "gold-2": "#C1BC94",    // hover
           "gold-dark": "#88835F", // pressed
           "gold-tint": "#F0EED6", // muy suave
+          coral: "#E85D3C",       // acento vivo — solo CTA primario
+          "coral-2": "#F26B4A",   // hover
+          "coral-dark": "#C74A2E",// pressed
+          "coral-tint": "#FBE5DD",// bg muy suave
         },
       },
       fontFamily: {

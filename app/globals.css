@@ -20,11 +20,16 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
 
   body {
     @apply bg-canvas text-ink font-sans antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: clip;
+    max-width: 100vw;
   }
 
   h1, h2, h3, h4 {
@@ -52,18 +57,19 @@
   }
 
   .btn-primary {
-    @apply btn bg-brand-teal text-white hover:bg-brand-teal-2 focus:ring-brand-teal;
-    box-shadow: 0 6px 0 -1px #023844, 0 10px 24px -8px rgba(2, 56, 68, 0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+    @apply btn bg-brand-coral text-white hover:bg-brand-coral-2 focus:ring-brand-coral;
+    box-shadow: 0 6px 0 -1px #C74A2E, 0 10px 24px -8px rgba(199,74,46,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
   }
-  .btn-primary:hover { box-shadow: 0 8px 0 -1px #023844, 0 14px 28px -8px rgba(2, 56, 68, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transform: translateY(-2px); }
-  .btn-primary:active { box-shadow: 0 2px 0 -1px #023844, 0 4px 10px -4px rgba(2, 56, 68, 0.3); transform: translateY(2px); }
+  .btn-primary:hover { box-shadow: 0 8px 0 -1px #C74A2E, 0 14px 28px -8px rgba(199,74,46,0.45), inset 0 1px 0 rgba(255,255,255,0.25); transform: translateY(-2px); }
+  .btn-primary:active { box-shadow: 0 2px 0 -1px #C74A2E, 0 4px 10px -4px rgba(199,74,46,0.35); transform: translateY(2px); }
 
+  /* .btn-gold used on dark bg — same coral for CTA unity */
   .btn-gold {
-    @apply btn bg-brand-gold text-brand-teal-dark hover:bg-brand-gold-2 focus:ring-brand-gold;
-    box-shadow: 0 6px 0 -1px #88835F, 0 10px 24px -8px rgba(136,131,95,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+    @apply btn bg-brand-coral text-white hover:bg-brand-coral-2 focus:ring-brand-coral;
+    box-shadow: 0 6px 0 -1px #C74A2E, 0 10px 24px -8px rgba(199,74,46,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
   }
-  .btn-gold:hover { transform: translateY(-2px); }
-  .btn-gold:active { transform: translateY(2px); box-shadow: 0 2px 0 -1px #88835F; }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 0 -1px #C74A2E, 0 14px 28px -8px rgba(199,74,46,0.45), inset 0 1px 0 rgba(255,255,255,0.25); }
+  .btn-gold:active { transform: translateY(2px); box-shadow: 0 2px 0 -1px #C74A2E, 0 4px 10px -4px rgba(199,74,46,0.35); }
 
   .btn-dark {
     @apply btn bg-ink text-white hover:bg-ink/90 focus:ring-ink;
@@ -179,6 +185,75 @@
   @keyframes blob-morph {
     0%, 100% { border-radius: 42% 58% 63% 37% / 47% 40% 60% 53%; transform: translate(0,0) scale(1); }
     50% { border-radius: 65% 35% 40% 60% / 55% 65% 35% 45%; transform: translate(15px, -20px) scale(1.05); }
+  }
+
+  /* LOADER — heartbeat ECG + logo, first visit only.
+     Fully CSS-driven so it works even before JS hydrates. */
+  .loader-root {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--canvas);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(0);
+    animation: loader-slide-out 0.75s cubic-bezier(0.83, 0, 0.17, 1) forwards 1.95s;
+    will-change: transform;
+  }
+  @keyframes loader-slide-out {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+  }
+  .loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    opacity: 0;
+    transform: scale(0.94);
+    animation: loader-fade-in 0.5s ease forwards;
+  }
+  @keyframes loader-fade-in {
+    to { opacity: 1; transform: scale(1); }
+  }
+  .loader-logo {
+    animation: loader-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes loader-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+  .loader-ecg {
+    width: 240px;
+    height: 44px;
+    display: block;
+  }
+  .loader-ecg path {
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    animation: loader-ecg-draw 1.7s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.25s;
+  }
+  @keyframes loader-ecg-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  .loader-wordmark {
+    font-family: var(--font-display), Helvetica, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--teal);
+    opacity: 0;
+    animation: loader-fade 0.6s ease-out forwards 1.3s;
+  }
+  @keyframes loader-fade {
+    to { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loader-root { animation-duration: 0.3s; animation-delay: 0.8s; }
+    .loader-logo { animation: none; }
+    .loader-ecg path { animation-duration: 0.5s; }
+    .loader-wordmark { animation-duration: 0.3s; animation-delay: 0.5s; }
   }
 }
 

@@ -41,7 +41,7 @@ export function Logo({ className = "", variant = "dark", showWordmark = true }: 
             MUNDO À PARTE
           </div>
           <div
-            className="text-[10px] md:text-xs uppercase tracking-[0.16em] mt-1 font-medium"
+            className="hidden sm:block text-[10px] md:text-xs uppercase tracking-[0.16em] mt-1 font-medium"
             style={{ color: tagline, opacity: isLight ? 0.85 : 0.7 }}
           >
             Fisioterapia Veterinária

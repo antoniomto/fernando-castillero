@@ -7,7 +7,7 @@ import { faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 export const metadata: Metadata = {
   title: "Contacto",
   description:
-    "Agendá una consulta con Fernando Castillero, fisioterapeuta veterinario. Escribinos por WhatsApp, email o visitanos.",
+    "Agenda una consulta con Fernando Castillero, fisioterapeuta veterinario. Escríbenos por WhatsApp, email o visítanos.",
   alternates: { canonical: "/contacto" },
 };
 
@@ -19,7 +19,7 @@ export default function ContactoPage() {
       <section className="bg-brand-teal text-white section">
         <div className="container-tight text-center">
           <span className="eyebrow">Contacto</span>
-          <h1 className="mt-3 text-white">Agendá una consulta</h1>
+          <h1 className="mt-3 text-white">Agenda una consulta</h1>
           <p className="mt-4 text-white/80 text-lg">
             La forma más rápida es por WhatsApp. También puedes escribir por email o pasar por el consultorio.
           </p>

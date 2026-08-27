@@ -64,7 +64,7 @@ export default function ServiciosPage() {
               rel="noopener noreferrer"
               className="btn-primary mt-4"
             >
-              Consultá sin cargo
+              Consulta sin cargo
             </a>
           </div>
         </div>

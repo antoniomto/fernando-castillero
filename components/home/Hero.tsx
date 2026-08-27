@@ -11,7 +11,7 @@ export function Hero() {
         <div className="relative h-[calc(100vh-72px)] min-h-[600px] max-h-[820px] w-full">
           {/* Imagen full bleed como fondo */}
           <Image
-            src="/images/hero.png"
+            src="/images/hero-b.jpg"
             alt="Vínculo humano-mascota: cariño y cuidado"
             fill
             priority
@@ -123,9 +123,9 @@ export function Hero() {
           <div className="deco-blob bg-brand-gold-tint w-[520px] h-[520px] -top-40 -left-40" />
         </div>
 
-        <div className="relative grid lg:grid-cols-2 items-stretch lg:min-h-[640px] xl:min-h-[720px]">
+        <div className="relative grid lg:grid-cols-2 items-stretch lg:min-h-[600px] xl:min-h-[680px]">
           {/* IZQUIERDA — texto */}
-          <div className="flex items-center py-16 lg:py-24">
+          <div className="flex items-center py-12 lg:py-16">
             <div className="w-full px-4 sm:px-6 lg:pl-8 lg:pr-12 xl:pl-[calc((100vw-1280px)/2+2rem)] xl:pr-16">
               <Reveal>
                 <div className="inline-flex items-center gap-2 rounded-full bg-brand-gold-tint text-brand-gold-dark px-4 py-1.5 text-xs font-semibold tracking-wide">
@@ -196,7 +196,7 @@ export function Hero() {
           {/* DERECHA — imagen full bleed */}
           <div className="relative">
             <Image
-              src="/images/hero.png"
+              src="/images/hero-b.jpg"
               alt="Vínculo humano-mascota: cariño y cuidado"
               fill
               priority
@@ -204,12 +204,12 @@ export function Hero() {
               className="object-cover object-right"
             />
 
-            <div className="absolute bottom-6 left-6 bg-white rounded-2xl px-5 py-4 shadow-xl border border-ink/5 max-w-[220px] z-10">
+            <div className="absolute bottom-20 left-6 bg-white rounded-2xl px-5 py-4 shadow-xl border border-ink/5 max-w-[220px] z-10">
               <div className="flex items-center gap-1 text-brand-teal">
                 {"★★★★★".split("").map((s, i) => <span key={i} className="text-lg leading-none">{s}</span>)}
               </div>
               <div className="mt-1.5 text-xs text-ink leading-snug">
-                <strong className="font-semibold">{`{{STAT_FAMILIAS}}`} familias</strong> ya confiaron su mascota.
+                <strong className="font-semibold">+200 familias</strong> ya confiaron su mascota.
               </div>
             </div>
 

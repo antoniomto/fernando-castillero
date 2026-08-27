@@ -53,7 +53,7 @@ export function ProblemSection() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Consultá sin compromiso
+              Consulta sin compromiso
             </a>
           </div>
         </Reveal>

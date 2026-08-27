@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
+import { Loader } from "@/components/Loader";
 import { JsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 import { veterinaryBusinessSchema } from "@/lib/structured-data";
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`${inter.variable} ${quicksand.variable} ${fraunces.variable}`}>
       <body>
+        <Loader />
         <JsonLd data={veterinaryBusinessSchema} />
         <Header />
         <main className="min-h-[60vh] pt-[72px]">{children}</main>
