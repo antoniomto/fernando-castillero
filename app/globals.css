@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0F1A1E;
+  --ink-soft: #5A6668;
+  --ink-muted: #8B9294;
+  --canvas: #FFFFFF;
+  --canvas-soft: #FAF8F3;
+  --canvas-cream: #F6F3D4;
+  --teal: #054D5E;
+  --teal-2: #0A6478;
+  --teal-dark: #023844;
+  --teal-tint: #E4EEF0;
+  --gold: #A9A478;
+  --gold-2: #C1BC94;
+  --gold-dark: #88835F;
+  --gold-tint: #F0EED6;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-[2.75rem] md:text-[5rem] lg:text-[6.5rem] font-medium leading-[0.98];
+    letter-spacing: -0.035em;
+  }
+  h2 { @apply text-[2rem] md:text-[3.5rem] font-medium leading-[1.02]; letter-spacing: -0.025em; }
+  h3 { @apply text-2xl md:text-[2rem] font-semibold leading-tight; }
+  h4 { @apply text-xl md:text-2xl font-semibold; }
+
+  ::selection { background: var(--teal); color: white; }
+}
+
+@layer components {
+  .container-tight { @apply container max-w-6xl; }
+
+  /* CLAYMORPHISM buttons — chunky, tactile, soft press */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-3.5 font-semibold text-[0.95rem] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 active:translate-y-[1px];
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-teal text-white hover:bg-brand-teal-2 focus:ring-brand-teal;
+    box-shadow: 0 6px 0 -1px #023844, 0 10px 24px -8px rgba(2, 56, 68, 0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  .btn-primary:hover { box-shadow: 0 8px 0 -1px #023844, 0 14px 28px -8px rgba(2, 56, 68, 0.4), inset 0 1px 0 rgba(255,255,255,0.2); transform: translateY(-2px); }
+  .btn-primary:active { box-shadow: 0 2px 0 -1px #023844, 0 4px 10px -4px rgba(2, 56, 68, 0.3); transform: translateY(2px); }
+
+  .btn-gold {
+    @apply btn bg-brand-gold text-brand-teal-dark hover:bg-brand-gold-2 focus:ring-brand-gold;
+    box-shadow: 0 6px 0 -1px #88835F, 0 10px 24px -8px rgba(136,131,95,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  .btn-gold:hover { transform: translateY(-2px); }
+  .btn-gold:active { transform: translateY(2px); box-shadow: 0 2px 0 -1px #88835F; }
+
+  .btn-dark {
+    @apply btn bg-ink text-white hover:bg-ink/90 focus:ring-ink;
+    box-shadow: 0 6px 0 -1px #000, 0 10px 24px -8px rgba(0,0,0,0.35);
+  }
+  .btn-dark:hover { transform: translateY(-2px); }
+  .btn-dark:active { transform: translateY(2px); box-shadow: 0 2px 0 -1px #000; }
+
+  .btn-outline {
+    @apply btn border-[3px] border-brand-teal text-brand-teal bg-white hover:bg-brand-teal hover:text-white focus:ring-brand-teal;
+  }
+
+  .btn-outline-light {
+    @apply btn border-[3px] border-white/50 text-white hover:bg-white hover:text-brand-teal focus:ring-white;
+  }
+
+  .section { @apply py-20 md:py-32; }
+
+  .eyebrow {
+    @apply inline-block text-xs md:text-sm uppercase tracking-[0.22em] text-brand-gold-dark font-semibold;
+  }
+
+  /* Claymorphism card: chunky, doble sombra, soft feel */
+  .card {
+    @apply bg-white rounded-[1.75rem] border-2 border-ink/[0.06] p-6 md:p-8 transition-all;
+    box-shadow: 0 4px 0 -1px rgba(15,26,30,0.06), 0 12px 30px -12px rgba(15,26,30,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+  .card:hover {
+    box-shadow: 0 6px 0 -1px rgba(15,26,30,0.08), 0 18px 40px -15px rgba(5,77,94,0.15), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-muted focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/25 transition;
+  }
+
+  .label { @apply block text-sm font-medium text-ink mb-2; }
+
+  /* Fade-in on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* SIGNATURE — BlobFrame */
+  .blob-frame {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+  .blob-frame > .blob-shape {
+    position: absolute;
+    inset: 0;
+    border-radius: 62% 38% 55% 45% / 48% 55% 45% 52%;
+    background-color: var(--teal); /* default: teal */
+    z-index: 0;
+    transform: translate(6%, 6%);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .blob-frame:hover > .blob-shape { transform: translate(4%, 4%) rotate(-3deg); }
+  .blob-frame > .blob-content {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 62% 38% 55% 45% / 48% 55% 45% 52%;
+  }
+  .blob-frame.blob-shape-2 > .blob-shape,
+  .blob-frame.blob-shape-2 > .blob-content {
+    border-radius: 42% 58% 38% 62% / 60% 45% 55% 40%;
+  }
+  .blob-frame.blob-shape-3 > .blob-shape,
+  .blob-frame.blob-shape-3 > .blob-content {
+    border-radius: 55% 45% 65% 35% / 40% 65% 35% 60%;
+  }
+  .blob-frame.blob-gold > .blob-shape { background-color: var(--gold); }
+  .blob-frame.blob-teal > .blob-shape { background-color: var(--teal); }
+
+  .marquee {
+    display: flex; overflow: hidden; user-select: none; gap: 3rem;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-track {
+    display: flex; gap: 3rem; padding-right: 3rem;
+    animation: marquee-scroll 32s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation-duration: 90s; } }
+
+  .deco-blob {
+    position: absolute;
+    border-radius: 42% 58% 63% 37% / 47% 40% 60% 53%;
+    filter: blur(40px);
+    animation: blob-morph 20s ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  @keyframes blob-morph {
+    0%, 100% { border-radius: 42% 58% 63% 37% / 47% 40% 60% 53%; transform: translate(0,0) scale(1); }
+    50% { border-radius: 65% 35% 40% 60% / 55% 65% 35% 45%; transform: translate(15px, -20px) scale(1.05); }
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+}
