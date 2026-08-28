@@ -16,7 +16,7 @@ export function ProblemSection() {
       <div className="container">
         <Reveal>
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="eyebrow">¿Reconocés estos signos?</span>
+            <span className="eyebrow">¿Reconoces estos signos?</span>
             <h2 className="mt-4 text-ink">
               La mayoría de los problemas de movilidad
               <br />

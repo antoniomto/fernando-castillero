@@ -65,7 +65,7 @@ export function Footer() {
             <span className="text-white/90 font-medium">Mundo à Parte</span>.
           </p>
           <p>
-            © {year} · Diseñado por{" "}
+            © <span suppressHydrationWarning>{year}</span> · Diseñado por{" "}
             <a
               href={siteConfig.design.url}
               target="_blank"

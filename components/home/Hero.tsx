@@ -7,53 +7,41 @@ export function Hero() {
   return (
     <>
       {/* ─────────── MOBILE HERO ─────────── (< lg) */}
-      <section className="lg:hidden relative bg-canvas overflow-hidden">
+      <section className="lg:hidden relative bg-gradient-to-b from-canvas-cream to-canvas overflow-hidden">
         <div className="relative h-[calc(100vh-72px)] min-h-[600px] max-h-[820px] w-full">
-          {/* Imagen full bleed como fondo */}
+          {/* Imagen full bleed con mix-blend-darken para fusionar el fondo blanco con el cream */}
           <Image
-            src="/images/hero-b.jpg"
+            src="/images/hero-v2.png"
             alt="Vínculo humano-mascota: cariño y cuidado"
             fill
             priority
+            quality={95}
             sizes="100vw"
-            className="object-cover object-[65%_25%]"
+            className="object-cover object-[72%_50%] mix-blend-darken"
           />
 
-          {/* Gradientes suaves para asegurar legibilidad del texto */}
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/85" />
-          <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white/90 to-transparent" />
+          {/* Gradientes suaves para asegurar legibilidad del texto (adaptados al cream) */}
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-canvas-cream/50 via-transparent to-canvas-cream/85" />
+          <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-canvas-cream/90 to-transparent" />
 
-          {/* Contenido overlay — H1 dividida en dos posiciones estilo revista */}
-          <div className="relative z-10 h-full grid grid-rows-[auto_1fr_auto_auto] gap-4 p-5 pt-6">
-            {/* Row 1: eyebrow badge (top-left) */}
-            <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/95 backdrop-blur text-brand-teal px-4 py-1.5 text-[11px] font-bold tracking-wider shadow-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-teal animate-pulse" />
-                FISIOTERAPIA VETERINARIA
-              </div>
-            </Reveal>
-
-            {/* Row 2: Primera línea del H1 — top-left */}
-            <div>
-              <Reveal delay={1}>
-                <h1 className="font-normal text-[3rem] sm:text-[4rem] leading-[0.95] tracking-[-0.02em] text-ink">
-                  Movimiento
-                  <br />
-                  sin{" "}
-                  <span className="font-italic italic font-semibold uppercase">dolor</span>
-                  <span className="text-brand-teal">,</span>
-                </h1>
-              </Reveal>
-            </div>
-
-            {/* Row 3: Segunda línea del H1 — bottom-right, cerca del CTA */}
-            <Reveal delay={2}>
-              <h1 className="font-normal text-[3rem] sm:text-[4rem] leading-[0.95] tracking-[-0.02em] text-right text-brand-teal">
-                a cualquier
-                <br />
-                <span className="font-italic italic font-semibold uppercase">edad</span>.
+          {/* Contenido overlay — H1 agrupado arriba, CTA abajo, imagen respira en medio */}
+          <div className="relative z-10 h-full grid grid-rows-[auto_1fr_auto] gap-4 p-5 pt-6">
+            {/* Row 1: H1 completo (ambas líneas juntas) — top-left */}
+            <Reveal delay={1}>
+              <h1 className="font-normal text-[3rem] sm:text-[4rem] leading-[0.95] tracking-[-0.02em]">
+                <span className="block text-ink">
+                  Movimiento sin{" "}
+                  <span className="font-italic italic font-semibold uppercase">dolor</span>,
+                </span>
+                <span className="block text-brand-teal mt-1">
+                  a cualquier{" "}
+                  <span className="font-italic italic font-semibold uppercase">edad</span>.
+                </span>
               </h1>
             </Reveal>
+
+            {/* Row 2: spacer — deja respirar la imagen */}
+            <div></div>
 
             {/* Row 4: CTA + trust */}
             <div className="mt-2">
@@ -116,106 +104,82 @@ export function Hero() {
         </div>
       </section>
 
-      {/* ─────────── DESKTOP HERO ─────────── (lg+) */}
-      <section className="hidden lg:block relative bg-canvas overflow-hidden">
-        {/* Decoración cálida sutil (solo mitad izquierda) */}
-        <div aria-hidden className="absolute inset-0 pointer-events-none">
-          <div className="deco-blob bg-brand-gold-tint w-[520px] h-[520px] -top-40 -left-40" />
-        </div>
-
-        <div className="relative grid lg:grid-cols-2 items-stretch lg:min-h-[600px] xl:min-h-[680px]">
-          {/* IZQUIERDA — texto */}
-          <div className="flex items-center py-12 lg:py-16">
-            <div className="w-full px-4 sm:px-6 lg:pl-8 lg:pr-12 xl:pl-[calc((100vw-1280px)/2+2rem)] xl:pr-16">
-              <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-full bg-brand-gold-tint text-brand-gold-dark px-4 py-1.5 text-xs font-semibold tracking-wide">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-teal animate-pulse" />
-                  FISIOTERAPIA & REHABILITACIÓN VETERINARIA
-                </div>
-              </Reveal>
-
-              <Reveal delay={1}>
-                <h1 className="mt-6 font-normal">
-                  <span className="text-ink">
-                    Movimiento sin{" "}
-                    <span className="font-italic italic font-semibold uppercase tracking-tight">dolor</span>,
-                  </span>
-                  <br />
-                  <span className="text-brand-teal">
-                    a cualquier{" "}
-                    <span className="font-italic italic font-semibold uppercase tracking-tight">edad</span>.
-                  </span>
-                </h1>
-              </Reveal>
-
-              <Reveal delay={2}>
-                <p className="mt-8 text-lg md:text-xl text-ink-soft max-w-lg leading-relaxed">
-                  Rehabilitación post-quirúrgica, manejo de artrosis y recuperación de movilidad
-                  para perros y gatos, con planes personalizados.
-                </p>
-              </Reveal>
-
-              <Reveal delay={3}>
-                <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <a
-                    href={whatsappLink("Hola Fernando, quería agendar una evaluación de fisioterapia.")}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary text-base"
-                  >
-                    Agendar evaluación
-                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                  <Link href="/servicios" className="btn-outline text-base">
-                    Ver cómo trabajamos
-                  </Link>
-                </div>
-              </Reveal>
-
-              <Reveal delay={4}>
-                <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-ink-soft text-sm">
-                  {[
-                    "Respuesta en menos de 1 hora",
-                    "Primera consulta sin compromiso",
-                    "Coordinación con tu veterinario",
-                  ].map((t) => (
-                    <div key={t} className="flex items-center gap-2">
-                      <svg className="h-4 w-4 text-brand-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      {t}
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-            </div>
-          </div>
-
-          {/* DERECHA — imagen full bleed */}
-          <div className="relative">
+      {/* ─────────── DESKTOP HERO ─────────── (lg+) — full-width con texto flotante */}
+      <section className="hidden lg:block relative bg-gradient-to-r from-canvas-cream to-canvas overflow-hidden">
+        <div className="relative w-full lg:min-h-[calc(100vh-72px)]">
+          {/* Imagen full-width con mix-blend-darken para "desaparecer" el fondo blanco sobre el cream */}
+          <div className="absolute inset-0 z-0">
             <Image
-              src="/images/hero-b.jpg"
+              src="/images/hero-v2.png"
               alt="Vínculo humano-mascota: cariño y cuidado"
               fill
               priority
-              sizes="50vw"
-              className="object-cover object-right"
+              quality={95}
+              sizes="100vw"
+              className="object-cover object-[78%_35%] mix-blend-darken"
             />
+          </div>
 
-            <div className="absolute bottom-20 left-6 bg-white rounded-2xl px-5 py-4 shadow-xl border border-ink/5 max-w-[220px] z-10">
-              <div className="flex items-center gap-1 text-brand-teal">
-                {"★★★★★".split("").map((s, i) => <span key={i} className="text-lg leading-none">{s}</span>)}
-              </div>
-              <div className="mt-1.5 text-xs text-ink leading-snug">
-                <strong className="font-semibold">+200 familias</strong> ya confiaron su mascota.
-              </div>
-            </div>
+          {/* Gradiente para legibilidad del texto (adaptado al cream) */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-r from-canvas-cream/90 via-canvas-cream/50 via-30% to-transparent to-60% z-10"
+          />
 
-            <div className="absolute top-6 right-6 bg-ink text-white rounded-full px-4 py-2 shadow-lg z-10">
-              <div className="text-[10px] uppercase tracking-widest text-white/70">Respuesta en</div>
-              <div className="text-sm font-semibold leading-tight">&lt; 1 hora</div>
+          {/* Contenido flotante sobre la imagen — 4 esenciales del skill: H1, subheading, primary CTA, secondary CTA */}
+          <div className="relative z-20 h-full flex items-center lg:min-h-[calc(100vh-72px)]">
+            <div className="w-full pl-8 sm:pl-12 lg:pl-20 xl:pl-28 2xl:pl-40 pr-8 py-12 lg:py-16">
+              <div className="max-w-3xl">
+                <Reveal>
+                  <h1 className="font-normal lg:text-[clamp(3rem,5.8vw,7rem)] leading-[0.95]">
+                    <span className="text-ink block">
+                      Movimiento sin{" "}
+                      <span className="font-italic italic font-semibold uppercase tracking-tight">dolor</span>,
+                    </span>
+                    <span className="text-brand-teal block">
+                      a cualquier{" "}
+                      <span className="font-italic italic font-semibold uppercase tracking-tight">edad</span>.
+                    </span>
+                  </h1>
+                </Reveal>
+
+                <Reveal delay={1}>
+                  <p className="mt-8 text-lg md:text-xl text-ink-soft max-w-lg leading-relaxed">
+                    Rehabilitación post-quirúrgica, manejo de artrosis y recuperación de movilidad
+                    para perros y gatos, con planes personalizados.
+                  </p>
+                </Reveal>
+
+                <Reveal delay={2}>
+                  <div className="mt-10 flex flex-wrap items-center gap-4">
+                    <a
+                      href={whatsappLink("Hola Fernando, quería agendar una evaluación de fisioterapia.")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary text-base"
+                    >
+                      Agendar evaluación
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
+                    <Link href="/servicios" className="btn-outline text-base">
+                      Ver cómo trabajamos
+                    </Link>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={3}>
+                  <div className="mt-6 flex items-center gap-3 text-sm text-ink-soft">
+                    <span className="flex items-center gap-1 text-brand-coral" aria-label="5 estrellas">
+                      {"★★★★★".split("").map((s, i) => <span key={i} className="text-base leading-none">{s}</span>)}
+                    </span>
+                    <span className="font-medium text-ink">5.0</span>
+                    <span className="text-ink-muted">·</span>
+                    <span><strong className="font-semibold text-ink">+200 familias</strong> confiaron su mascota</span>
+                  </div>
+                </Reveal>
+              </div>
             </div>
           </div>
         </div>

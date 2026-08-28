@@ -30,7 +30,7 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         dark
           ? "bg-brand-teal shadow-lg"
-          : "bg-white/90 backdrop-blur border-b border-ink/[0.06]"
+          : "bg-gradient-to-r from-canvas-cream/95 to-canvas/95 backdrop-blur border-b border-brand-gold/15"
       }`}
       style={{ transform: "translateZ(0)", willChange: "background-color" }}
     >
@@ -51,14 +51,6 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <a
-            href={whatsappLink("Hola Fernando, quería consultarte sobre una sesión de fisioterapia para mi mascota.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={dark ? "btn-gold text-sm py-2.5 px-5" : "btn-primary text-sm py-2.5 px-5"}
-          >
-            Agendar
-          </a>
         </nav>
 
         <button
