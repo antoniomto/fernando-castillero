@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { Reveal } from "../Reveal";
-import { whatsappLink } from "@/lib/site-config";
+import { ModalDrawer } from "@/components/ui/ModalDrawer";
+import { EmergencyTriage } from "@/components/tools/EmergencyTriage";
+import { TherapyExplorer } from "@/components/tools/TherapyExplorer";
+import { MobilityGuide } from "@/components/tools/MobilityGuide";
 
 interface PillarData {
-  id: string;
+  id: "canem" | "mundo-aparte" | "protesis";
   badge: string;
   badgeColor: string;
   title: string;
@@ -14,7 +17,7 @@ interface PillarData {
   icon: (className?: string) => React.ReactNode;
   highlights: string[];
   ctaText: string;
-  ctaAction: string;
+  dedicatedHref: string;
   stat: { value: string; label: string };
   gradient: string;
 }
@@ -41,8 +44,8 @@ const pillars: PillarData[] = [
       "Medicina interna, vacunas y cuidado dental",
       "Diagnóstico clínico y urgencias veterinarias",
     ],
-    ctaText: "Ver protocolo hospitalario & triage",
-    ctaAction: "#triage-hospitalario",
+    ctaText: "Abrir Triage & Protocolo Quirúrgico",
+    dedicatedHref: "/herramientas/triage-urgencias",
     stat: { value: "24/7", label: "Atención y quirófano especializado" },
     gradient: "from-blue-600/10 via-transparent to-transparent",
   },
@@ -66,8 +69,8 @@ const pillars: PillarData[] = [
       "Rehabilitación post-quirúrgica y artrosis",
       "Planes biomecánicos personalizados por sesión",
     ],
-    ctaText: "Explorar terapias interactivas",
-    ctaAction: "#terapias-fisioterapia",
+    ctaText: "Explorar Terapias Interactivas",
+    dedicatedHref: "/herramientas/explorador-terapias",
     stat: { value: "Global", label: "Red internacional de rehabilitación" },
     gradient: "from-emerald-600/10 via-transparent to-transparent",
   },
@@ -91,14 +94,16 @@ const pillars: PillarData[] = [
       "Sillas de ruedas ergonómicas personalizadas",
       "Adaptación y readiestramiento motor guiado",
     ],
-    ctaText: "Guía interactiva de prótesis",
-    ctaAction: "#guia-biomecanica",
+    ctaText: "Abrir Guía de Prótesis & Órtesis",
+    dedicatedHref: "/herramientas/guia-protesis",
     stat: { value: "100%", label: "Diseño anatómico personalizado" },
     gradient: "from-amber-600/10 via-transparent to-transparent",
   },
 ];
 
 export function EcosystemPillars() {
+  const [activeModal, setActiveModal] = useState<"canem" | "mundo-aparte" | "protesis" | null>(null);
+
   return (
     <section id="ecosistema" className="section bg-canvas-soft relative overflow-hidden">
       {/* Ambient background glows */}
@@ -189,22 +194,55 @@ export function EcosystemPillars() {
                     </div>
                   </div>
 
-                  {/* Action Link / Button */}
-                  <a
-                    href={p.ctaAction}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 text-white hover:bg-brand-marine py-3.5 px-5 text-xs md:text-sm font-semibold transition-all duration-200 shadow-sm"
+                  {/* Action Link / Interactive Modal Trigger Button */}
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal(p.id)}
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 text-white hover:bg-brand-marine py-3.5 px-5 text-xs md:text-sm font-semibold transition-all duration-200 shadow-sm cursor-pointer"
                   >
                     <span>{p.ctaText}</span>
-                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg className="h-3.5 w-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
       </div>
+
+      {/* Immersive Mobile-First Modal Drawers */}
+      <ModalDrawer
+        isOpen={activeModal === "canem"}
+        onClose={() => setActiveModal(null)}
+        title="CANEM Hospital · Sede Quirúrgica & Urgencias 24/7"
+        subtitle="Protocolo de triage y evaluación inmediata de gravedad en Aguascalientes"
+        fullPageHref="/herramientas/triage-urgencias"
+      >
+        <EmergencyTriage />
+      </ModalDrawer>
+
+      <ModalDrawer
+        isOpen={activeModal === "mundo-aparte"}
+        onClose={() => setActiveModal(null)}
+        title="Mundo Aparte · Explorador Científico de Terapias"
+        subtitle="Fundamento biológico, indicaciones y protocolo de fisioterapia veterinaria"
+        fullPageHref="/herramientas/explorador-terapias"
+      >
+        <TherapyExplorer />
+      </ModalDrawer>
+
+      <ModalDrawer
+        isOpen={activeModal === "protesis"}
+        onClose={() => setActiveModal(null)}
+        title="Unidad de Biomecánica & Prótesis a Medida"
+        subtitle="Asistente interactivo de dispositivos ortopédicos, sillas de ruedas y férulas"
+        fullPageHref="/herramientas/guia-protesis"
+      >
+        <MobilityGuide />
+      </ModalDrawer>
     </section>
   );
 }
+
