@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { PainAtlas } from "@/components/tools/PainAtlas";
+import { RelatedTools } from "@/components/tools/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Atlas Anatómico del Dolor en Mascotas (Perros y Gatos)",
@@ -14,14 +15,15 @@ export default function AtlasDolorPage() {
     <>
       <section className="bg-brand-marine text-white section">
         <div className="container-tight text-center">
-          <nav aria-label="Migas de pan" className="mb-4">
-            <Link
-              href="/herramientas"
-              className="text-xs font-semibold text-emerald-300 hover:text-white transition inline-flex items-center gap-1.5"
-            >
-              <span>← Volver a Herramientas Clínicas</span>
-            </Link>
-          </nav>
+          <div className="mb-5 flex justify-center">
+            <Breadcrumbs
+              items={[
+                { label: "Inicio", href: "/" },
+                { label: "Herramientas", href: "/herramientas" },
+                { label: "Atlas del Dolor" },
+              ]}
+            />
+          </div>
           <span className="eyebrow bg-white/10 text-emerald-300 border-white/20">
             Detección Oportuna & Anatomía
           </span>
@@ -38,6 +40,7 @@ export default function AtlasDolorPage() {
       <section className="section bg-slate-50">
         <div className="container max-w-5xl">
           <PainAtlas />
+          <RelatedTools currentSlug="atlas-dolor" />
         </div>
       </section>
     </>

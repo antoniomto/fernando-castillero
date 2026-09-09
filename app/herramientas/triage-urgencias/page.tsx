@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { EmergencyTriage } from "@/components/tools/EmergencyTriage";
+import { RelatedTools } from "@/components/tools/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Triage Médico & Urgencias Veterinarias 24/7 | CANEM Hospital",
@@ -14,14 +15,15 @@ export default function TriageUrgenciasPage() {
     <>
       <section className="bg-slate-950 text-white section">
         <div className="container-tight text-center">
-          <nav aria-label="Migas de pan" className="mb-4">
-            <Link
-              href="/herramientas"
-              className="text-xs font-semibold text-rose-400 hover:text-white transition inline-flex items-center gap-1.5"
-            >
-              <span>← Volver a Herramientas Clínicas</span>
-            </Link>
-          </nav>
+          <div className="mb-5 flex justify-center">
+            <Breadcrumbs
+              items={[
+                { label: "Inicio", href: "/" },
+                { label: "Herramientas", href: "/herramientas" },
+                { label: "Triage de Urgencias 24/7" },
+              ]}
+            />
+          </div>
           <span className="eyebrow bg-rose-500/20 text-rose-300 border-rose-500/30">
             CANEM Hospital · Sede Quirúrgica 24/7
           </span>
@@ -38,6 +40,9 @@ export default function TriageUrgenciasPage() {
       <section className="section bg-slate-900">
         <div className="container max-w-5xl">
           <EmergencyTriage />
+          <div className="text-slate-200">
+            <RelatedTools currentSlug="triage-urgencias" />
+          </div>
         </div>
       </section>
     </>

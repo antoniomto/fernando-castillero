@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { MobilityScreener } from "@/components/tools/MobilityScreener";
+import { RelatedTools } from "@/components/tools/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Test Rápido de Movilidad, Artrosis y Displasia en Mascotas",
@@ -14,14 +15,15 @@ export default function TestMovilidadPage() {
     <>
       <section className="bg-brand-marine text-white section">
         <div className="container-tight text-center">
-          <nav aria-label="Migas de pan" className="mb-4">
-            <Link
-              href="/herramientas"
-              className="text-xs font-semibold text-emerald-300 hover:text-white transition inline-flex items-center gap-1.5"
-            >
-              <span>← Volver a Herramientas Clínicas</span>
-            </Link>
-          </nav>
+          <div className="mb-5 flex justify-center">
+            <Breadcrumbs
+              items={[
+                { label: "Inicio", href: "/" },
+                { label: "Herramientas", href: "/herramientas" },
+                { label: "Test de Movilidad & Artrosis" },
+              ]}
+            />
+          </div>
           <span className="eyebrow bg-white/10 text-emerald-300 border-white/20">
             Prevención & Diagnóstico Oportuno
           </span>
@@ -38,6 +40,7 @@ export default function TestMovilidadPage() {
       <section className="section bg-slate-50">
         <div className="container max-w-5xl">
           <MobilityScreener />
+          <RelatedTools currentSlug="test-movilidad" />
         </div>
       </section>
     </>

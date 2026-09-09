@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { MobilityGuide } from "@/components/tools/MobilityGuide";
+import { RelatedTools } from "@/components/tools/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Guía de Soluciones Biomecánicas & Prótesis Veterinarias",
@@ -14,14 +15,15 @@ export default function GuiaProtesisPage() {
     <>
       <section className="bg-slate-900 text-white section">
         <div className="container-tight text-center">
-          <nav aria-label="Migas de pan" className="mb-4">
-            <Link
-              href="/herramientas"
-              className="text-xs font-semibold text-amber-400 hover:text-white transition inline-flex items-center gap-1.5"
-            >
-              <span>← Volver a Herramientas Clínicas</span>
-            </Link>
-          </nav>
+          <div className="mb-5 flex justify-center">
+            <Breadcrumbs
+              items={[
+                { label: "Inicio", href: "/" },
+                { label: "Herramientas", href: "/herramientas" },
+                { label: "Guía de Prótesis & Biomecánica" },
+              ]}
+            />
+          </div>
           <span className="eyebrow bg-white/10 text-amber-300 border-white/20">
             Unidad de Biomecánica & Prótesis
           </span>
@@ -38,6 +40,7 @@ export default function GuiaProtesisPage() {
       <section className="section bg-slate-50">
         <div className="container max-w-5xl">
           <MobilityGuide />
+          <RelatedTools currentSlug="guia-protesis" />
         </div>
       </section>
     </>

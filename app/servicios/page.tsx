@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { services } from "@/data/services";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { TherapyExplorer } from "@/components/tools/TherapyExplorer";
@@ -16,9 +17,17 @@ export default function ServiciosPage() {
     <>
       <section className="bg-brand-marine text-white section">
         <div className="container-tight text-center">
+          <div className="mb-5 flex justify-center">
+            <Breadcrumbs
+              items={[
+                { label: "Inicio", href: "/" },
+                { label: "Servicios Clínicos" },
+              ]}
+            />
+          </div>
           <span className="eyebrow bg-white/10 text-emerald-300 border-white/20">Tratamientos & Especialidades</span>
-          <h1 className="mt-3 text-white">Servicios Clínicos y Fisioterapia</h1>
-          <p className="mt-4 text-white/80 text-lg max-w-2xl mx-auto">
+          <h1 className="mt-3 text-white text-3xl md:text-5xl font-bold">Servicios Clínicos y Fisioterapia</h1>
+          <p className="mt-4 text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Medicina hospitalaria rigurosa, protocolos de vanguardia y rehabilitación personalizada en Aguascalientes.
           </p>
         </div>

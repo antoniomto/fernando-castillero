@@ -40,6 +40,14 @@ export function Header() {
     }
   };
 
+  const isItemActive = (href: string) => {
+    if (href === "/herramientas" && pathname.startsWith("/herramientas")) return true;
+    if (href === "/#ecosistema" && pathname === "/servicios") return true;
+    if (href === "/#sobre-fernando" && pathname === "/sobre") return true;
+    if (href === "/#contacto" && pathname === "/contacto") return true;
+    return pathname === href;
+  };
+
   const dark = scrolled;
 
   return (
@@ -58,17 +66,17 @@ export function Header() {
 
         <nav className="hidden xl:flex items-center gap-7">
           {nav.map((item) => {
-            const isExactActive = pathname === item.href;
+            const isActive = isItemActive(item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-sm font-medium transition-colors ${
-                  isExactActive
+                className={`text-sm font-medium transition-colors relative py-1 ${
+                  isActive
                     ? dark
-                      ? "text-emerald-300 font-bold"
-                      : "text-brand-marine font-bold"
+                      ? "text-emerald-300 font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-emerald-300 after:rounded-full"
+                      : "text-brand-marine font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-brand-marine after:rounded-full"
                     : dark
                     ? "text-slate-100 hover:text-white"
                     : "text-slate-600 hover:text-brand-marine"
@@ -114,18 +122,28 @@ export function Header() {
           }`}
         >
           <div className="flex flex-col gap-2">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={`py-2 text-sm font-medium transition ${
-                  dark ? "text-slate-200 hover:text-white" : "text-slate-700 hover:text-brand-marine"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {nav.map((item) => {
+              const isActive = isItemActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={`py-2 text-sm font-medium transition flex items-center justify-between ${
+                    isActive
+                      ? dark
+                        ? "text-emerald-300 font-bold"
+                        : "text-brand-marine font-bold"
+                      : dark
+                      ? "text-slate-200 hover:text-white"
+                      : "text-slate-700 hover:text-brand-marine"
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {isActive && <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />}
+                </Link>
+              );
+            })}
             <a
               href={whatsappLink("Hola Dr. Fernando, me gustaría agendar una consulta.")}
               target="_blank"

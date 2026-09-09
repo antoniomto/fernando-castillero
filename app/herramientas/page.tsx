@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ToolCard } from "@/components/ui/ToolCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -14,6 +15,14 @@ export default function HerramientasPage() {
     <>
       <section className="bg-brand-marine text-white section">
         <div className="container-tight text-center">
+          <div className="mb-5 flex justify-center">
+            <Breadcrumbs
+              items={[
+                { label: "Inicio", href: "/" },
+                { label: "Herramientas" },
+              ]}
+            />
+          </div>
           <span className="eyebrow bg-white/10 text-emerald-300 border-white/20">Recursos Clínicos Gratuitos</span>
           <h1 className="mt-4 text-white text-3xl md:text-5xl font-bold">
             Herramientas Interactivas para Propietarios
