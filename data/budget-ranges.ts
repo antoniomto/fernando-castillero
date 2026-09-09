@@ -11,31 +11,31 @@ export type BudgetRange = {
 };
 
 const catRanges: Record<Quality, BudgetRange> = {
-  economico: { alimento: 3500, vet: 1500, higiene: 800, accesorios: 500, imprevistos: 1000 },
-  premium:   { alimento: 6500, vet: 2200, higiene: 1000, accesorios: 700, imprevistos: 1500 },
-  super:     { alimento: 9500, vet: 3000, higiene: 1200, accesorios: 900, imprevistos: 2000 },
+  economico: { alimento: 450, vet: 250, higiene: 150, accesorios: 100, imprevistos: 250 },
+  premium:   { alimento: 850, vet: 450, higiene: 250, accesorios: 180, imprevistos: 400 },
+  super:     { alimento: 1400, vet: 650, higiene: 350, accesorios: 250, imprevistos: 600 },
 };
 
 const dogRanges: Record<Size, Record<Quality, BudgetRange>> = {
   pequeno: {
-    economico: { alimento: 3500, vet: 2000, higiene: 1500, accesorios: 800,  imprevistos: 1200 },
-    premium:   { alimento: 6500, vet: 3000, higiene: 2000, accesorios: 1200, imprevistos: 1800 },
-    super:     { alimento: 9500, vet: 4000, higiene: 2500, accesorios: 1500, imprevistos: 2500 },
+    economico: { alimento: 550, vet: 300, higiene: 250, accesorios: 150, imprevistos: 300 },
+    premium:   { alimento: 1050, vet: 550, higiene: 400, accesorios: 250, imprevistos: 500 },
+    super:     { alimento: 1650, vet: 800, higiene: 550, accesorios: 350, imprevistos: 700 },
   },
   mediano: {
-    economico: { alimento: 6000,  vet: 2500, higiene: 1800, accesorios: 1000, imprevistos: 1500 },
-    premium:   { alimento: 11000, vet: 3800, higiene: 2400, accesorios: 1500, imprevistos: 2200 },
-    super:     { alimento: 16000, vet: 5000, higiene: 3000, accesorios: 1800, imprevistos: 3000 },
+    economico: { alimento: 950, vet: 400, higiene: 350, accesorios: 200, imprevistos: 400 },
+    premium:   { alimento: 1750, vet: 700, higiene: 500, accesorios: 300, imprevistos: 650 },
+    super:     { alimento: 2650, vet: 1050, higiene: 700, accesorios: 450, imprevistos: 900 },
   },
   grande: {
-    economico: { alimento: 10000, vet: 3200, higiene: 2200, accesorios: 1300, imprevistos: 2000 },
-    premium:   { alimento: 18000, vet: 4500, higiene: 2800, accesorios: 1800, imprevistos: 2800 },
-    super:     { alimento: 26000, vet: 6000, higiene: 3500, accesorios: 2200, imprevistos: 3800 },
+    economico: { alimento: 1550, vet: 550, higiene: 450, accesorios: 250, imprevistos: 550 },
+    premium:   { alimento: 2750, vet: 900, higiene: 650, accesorios: 400, imprevistos: 900 },
+    super:     { alimento: 4100, vet: 1350, higiene: 900, accesorios: 600, imprevistos: 1250 },
   },
   gigante: {
-    economico: { alimento: 15000, vet: 4000, higiene: 2800, accesorios: 1600, imprevistos: 2500 },
-    premium:   { alimento: 26000, vet: 5500, higiene: 3400, accesorios: 2200, imprevistos: 3500 },
-    super:     { alimento: 38000, vet: 7500, higiene: 4200, accesorios: 2800, imprevistos: 4800 },
+    economico: { alimento: 2350, vet: 750, higiene: 600, accesorios: 350, imprevistos: 750 },
+    premium:   { alimento: 3950, vet: 1250, higiene: 850, accesorios: 550, imprevistos: 1200 },
+    super:     { alimento: 5900, vet: 1800, higiene: 1150, accesorios: 800, imprevistos: 1650 },
   },
 };
 
@@ -45,4 +45,4 @@ export function getBudget(species: Species, size: Size, quality: Quality): Budge
 }
 
 export const currency = (n: number) =>
-  n.toLocaleString("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });
+  n.toLocaleString("es-MX", { style: "currency", currency: "MXN", maximumFractionDigits: 0 });

@@ -1,4 +1,5 @@
 import { Reveal } from "../Reveal";
+import { PainAtlas } from "../tools/PainAtlas";
 import { whatsappLink } from "@/lib/site-config";
 
 const signos = [
@@ -43,6 +44,13 @@ export function ProblemSection() {
               </div>
             </Reveal>
           ))}
+        </div>
+
+        {/* Interactive Anatomical Pain Atlas */}
+        <div className="mt-14 max-w-5xl mx-auto">
+          <Reveal delay={2}>
+            <PainAtlas />
+          </Reveal>
         </div>
 
         <Reveal>

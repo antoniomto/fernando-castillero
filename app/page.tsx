@@ -4,6 +4,8 @@ import { SocialProofBar } from "@/components/home/SocialProofBar";
 import { EcosystemPillars } from "@/components/home/EcosystemPillars";
 import { ProblemSection } from "@/components/home/ProblemSection";
 import { FernandoTimeline } from "@/components/home/FernandoTimeline";
+import { TherapyExplorer } from "@/components/tools/TherapyExplorer";
+import { MobilityGuide } from "@/components/tools/MobilityGuide";
 import { MobilityScreener } from "@/components/tools/MobilityScreener";
 import { EmergencyTriage } from "@/components/tools/EmergencyTriage";
 import { FeedingCalculator } from "@/components/tools/FeedingCalculator";
@@ -17,63 +19,99 @@ export default function HomePage() {
       <ProblemSection />
       <EcosystemPillars />
 
-      {/* SECCIÓN INTERACTIVA: HERRAMIENTAS DE SALUD */}
+      {/* SECCIÓN INTERACTIVA: HERRAMIENTAS Y EXPLORADORES CLÍNICOS */}
       <section id="herramientas" className="section bg-slate-50 relative overflow-hidden">
         <div className="container relative z-10">
           <Reveal>
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="eyebrow">Recursos para Propietarios</span>
+              <span className="eyebrow">Recursos & Exploradores Clínicos</span>
               <h2 className="mt-4 text-ink">
-                Herramientas Clínicas Interactivas
+                Experiencias Interactivas Especializadas
                 <br />
                 <span className="text-brand-marine font-semibold">100% Gratuitas y sin Registro</span>
               </h2>
               <p className="mt-6 text-lg text-slate-600 leading-relaxed">
-                Diseñadas por el equipo del Dr. Fernando Castillero para ayudarte a evaluar la movilidad,
-                identificar síntomas de urgencia y calcular la nutrición óptima de tu mascota.
+                Diseñadas por el equipo del Dr. Fernando Castillero para ayudarte a comprender las terapias de fisioterapia,
+                guiar soluciones biomecánicas, evaluar movilidad y responder a urgencias hospitalarias.
               </p>
             </div>
           </Reveal>
 
-          {/* Interactive Screener 1: Mobility & Joint Pain */}
-          <div className="space-y-12 max-w-5xl mx-auto">
-            <Reveal delay={1}>
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Herramienta 1 · Detección de Artrosis y Displasia
-                  </span>
+          <div className="space-y-16 max-w-5xl mx-auto">
+            {/* Interactive Feature 1: Mundo Aparte Therapy Explorer */}
+            <div id="terapias-fisioterapia" className="scroll-mt-24">
+              <Reveal delay={1}>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                      Mundo Aparte · Explorador Científico de Terapias
+                    </span>
+                  </div>
+                  <TherapyExplorer />
                 </div>
-                <MobilityScreener />
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
 
-            {/* Interactive Screener 2: Emergency Triage */}
-            <Reveal delay={2}>
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Herramienta 2 · Protocolo de Urgencias Hospitalarias (CANEM)
-                  </span>
+            {/* Interactive Feature 2: Biomechanical Solutions Guide */}
+            <div id="guia-biomecanica" className="scroll-mt-24">
+              <Reveal delay={2}>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                      Unidad de Prótesis · Guía de Dispositivos Ortopédicos
+                    </span>
+                  </div>
+                  <MobilityGuide />
                 </div>
-                <EmergencyTriage />
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
 
-            {/* Interactive Tool 3: Feeding Calculator */}
-            <Reveal delay={3}>
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-blue-500" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Herramienta 3 · Nutrición y Requerimiento Energético (WSAVA)
-                  </span>
+            {/* Interactive Screener 3: Emergency Triage */}
+            <div id="triage-hospitalario" className="scroll-mt-24">
+              <Reveal delay={1}>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                      CANEM Hospital · Triage Médico y Protocolo de Urgencias 24/7
+                    </span>
+                  </div>
+                  <EmergencyTriage />
                 </div>
-                <FeedingCalculator />
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
+
+            {/* Interactive Screener 4: Mobility & Joint Pain */}
+            <div>
+              <Reveal delay={2}>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="h-2.5 w-2.5 rounded-full bg-blue-500" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                      Evaluación Clínica · Test Rápido de Movilidad y Artrosis
+                    </span>
+                  </div>
+                  <MobilityScreener />
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Interactive Tool 5: Feeding Calculator */}
+            <div>
+              <Reveal delay={3}>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="h-2.5 w-2.5 rounded-full bg-teal-500" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                      Nutrición Veterinaria · Requerimiento Energético (WSAVA)
+                    </span>
+                  </div>
+                  <FeedingCalculator />
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>

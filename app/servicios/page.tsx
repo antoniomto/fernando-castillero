@@ -1,48 +1,49 @@
 import type { Metadata } from "next";
 import { services } from "@/data/services";
 import { ServiceIcon } from "@/components/ServiceIcon";
+import { TherapyExplorer } from "@/components/tools/TherapyExplorer";
 import { whatsappLink } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Servicios",
+  title: "Servicios Clínicos & Fisioterapia",
   description:
-    "Hidroterapia, laserterapia, masaje terapéutico, rehabilitación post-quirúrgica, geriatría y deportiva. Fisioterapia veterinaria por Fernando Castillero.",
+    "Especialidades veterinarias, fisioterapia avanzada en Mundo Aparte y cirugía en CANEM por el Dr. Fernando Castillero.",
   alternates: { canonical: "/servicios" },
 };
 
 export default function ServiciosPage() {
   return (
     <>
-      <section className="bg-brand-teal text-white section">
+      <section className="bg-brand-marine text-white section">
         <div className="container-tight text-center">
-          <span className="eyebrow">Tratamientos</span>
-          <h1 className="mt-3 text-white">Servicios de fisioterapia</h1>
-          <p className="mt-4 text-white/80 text-lg">
-            Terapias complementarias, planes personalizados y seguimiento continuo.
+          <span className="eyebrow bg-white/10 text-emerald-300 border-white/20">Tratamientos & Especialidades</span>
+          <h1 className="mt-3 text-white">Servicios Clínicos y Fisioterapia</h1>
+          <p className="mt-4 text-white/80 text-lg max-w-2xl mx-auto">
+            Medicina hospitalaria rigurosa, protocolos de vanguardia y rehabilitación personalizada en Aguascalientes.
           </p>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section bg-canvas">
         <div className="container">
           <div className="grid gap-8 md:gap-10">
             {services.map((s, i) => (
               <article
                 key={s.slug}
                 className={`card md:p-10 grid gap-6 md:grid-cols-[auto_1fr] items-start ${
-                  i % 2 === 1 ? "md:bg-brand-teal/[0.02]" : ""
+                  i % 2 === 1 ? "md:bg-slate-50" : ""
                 }`}
               >
-                <div className="h-16 w-16 rounded-2xl bg-brand-teal/15 text-brand-teal-2 flex items-center justify-center">
+                <div className="h-16 w-16 rounded-2xl bg-brand-marine-tint text-brand-marine flex items-center justify-center shrink-0">
                   <ServiceIcon name={s.icon} className="h-9 w-9" />
                 </div>
                 <div>
                   <h3 className="text-ink">{s.title}</h3>
-                  <p className="mt-3 text-ink-soft">{s.description}</p>
+                  <p className="mt-3 text-slate-600">{s.description}</p>
                   <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                     {s.benefits.map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-sm text-ink-soft">
-                        <svg className="h-5 w-5 shrink-0 text-brand-teal mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <li key={b} className="flex items-start gap-2 text-sm text-slate-700">
+                        <svg className="h-5 w-5 shrink-0 text-emerald-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                         <span>{b}</span>
@@ -54,17 +55,22 @@ export default function ServiciosPage() {
             ))}
           </div>
 
+          {/* Interactive Therapy Explorer */}
+          <div className="mt-20">
+            <TherapyExplorer />
+          </div>
+
           <div className="mt-16 text-center">
-            <p className="text-ink-soft">
-              ¿No estás seguro de qué tratamiento necesita tu mascota?
+            <p className="text-slate-600">
+              ¿No estás seguro de qué tratamiento o valoración necesita tu mascota?
             </p>
             <a
-              href={whatsappLink("Hola Fernando, quería consultarte qué tratamiento sería el ideal para mi mascota.")}
+              href={whatsappLink("Hola Dr. Fernando, quería consultarte qué tratamiento sería el ideal para el caso de mi mascota.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary mt-4"
+              className="btn-primary mt-4 inline-flex text-sm px-8 py-3.5"
             >
-              Consulta sin cargo
+              Orientación Médica por WhatsApp
             </a>
           </div>
         </div>

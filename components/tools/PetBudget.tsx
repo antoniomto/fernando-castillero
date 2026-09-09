@@ -103,7 +103,7 @@ export function PetBudget() {
         </div>
 
         <p className="text-xs text-ink-muted pt-2 border-t border-ink/10">
-          Valores orientativos en pesos argentinos. Se actualizan periódicamente y varían según ciudad.
+          Valores orientativos en pesos mexicanos (MXN). Se calculan según promedios veterinarios y marcas en México.
         </p>
       </form>
 
