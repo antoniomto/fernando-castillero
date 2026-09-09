@@ -10,29 +10,39 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#0F1A1E",
-          soft: "#5A6668",
-          muted: "#8B9294",
+          DEFAULT: "#0C1A24",
+          soft: "#475569",
+          muted: "#94A3B8",
         },
         canvas: {
           DEFAULT: "#FFFFFF",
-          soft: "#FAF8F3",
-          cream: "#F6F3D4",       // user's cream
-          "cream-2": "#FBF9E9",
+          soft: "#F8FAFC",
+          subtle: "#F1F5F9",
+          surface: "#FAFCFD",
+          cream: "#F8FAFC",
+          "cream-2": "#F1F5F9",
         },
         brand: {
-          teal: "#054D5E",        // user's teal — primario ahora
-          "teal-2": "#0A6478",    // hover
-          "teal-dark": "#023844", // pressed / deep
-          "teal-tint": "#E4EEF0", // muy suave para chips/bgs
-          gold: "#A9A478",        // user's gold khaki — accent
-          "gold-2": "#C1BC94",    // hover
-          "gold-dark": "#88835F", // pressed
-          "gold-tint": "#F0EED6", // muy suave
-          coral: "#E85D3C",       // acento vivo — solo CTA primario
-          "coral-2": "#F26B4A",   // hover
-          "coral-dark": "#C74A2E",// pressed
-          "coral-tint": "#FBE5DD",// bg muy suave
+          marine: "#0E4A56",
+          "marine-2": "#093740",
+          "marine-light": "#146373",
+          "marine-tint": "#E8F4F7",
+          emerald: "#0D9488",
+          "emerald-light": "#10B981",
+          "emerald-tint": "#ECFDF5",
+          coral: "#E05D38",
+          "coral-2": "#C94D2A",
+          "coral-dark": "#B03E1D",
+          "coral-tint": "#FFF1EC",
+          // Backward compatibility mappings
+          teal: "#0E4A56",
+          "teal-2": "#093740",
+          "teal-dark": "#06252C",
+          "teal-tint": "#E8F4F7",
+          gold: "#0D9488",
+          "gold-2": "#10B981",
+          "gold-dark": "#047857",
+          "gold-tint": "#ECFDF5",
         },
       },
       fontFamily: {

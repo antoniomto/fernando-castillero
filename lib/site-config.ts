@@ -1,19 +1,37 @@
 export const siteConfig = {
-  name: "Fernando Castillero",
-  role: "Fisioterapia Veterinaria",
-  franquicia: "Mundo à Parte",
+  name: "Dr. Fernando Castillero",
+  role: "Médico Veterinario · Director Clínico & Especialista en Movilidad",
+  franquicia: "Mundo Aparte · CANEM Hospital · Biomecánica Animal",
   url: "https://fernandocastillero.com",
   description:
-    "Fisioterapia y rehabilitación veterinaria por Fernando Castillero. Hidroterapia, láser, masajes terapéuticos y recuperación post-quirúrgica para perros y gatos.",
+    "Medicina veterinaria de vanguardia, cirugía y hospitalización en CANEM, junto con fisioterapia y rehabilitación avanzada en Mundo Aparte por el Dr. Fernando Castillero.",
 
   contact: {
     telefono: "{{TELEFONO}}",
-    whatsapp: "{{WHATSAPP}}",
+    whatsapp: "5214490000000",
     email: "{{EMAIL}}",
-    direccion: "{{DIRECCION}}",
-    ciudad: "{{CIUDAD}}",
-    horarios: "{{HORARIOS}}",
-    mapsEmbed: "{{GOOGLE_MAPS_EMBED}}",
+    direccion: "Avenida Convención de 1914 Norte #1506, esq. Jacaranda, Circunvalación Norte, C.P. 20020",
+    ciudad: "Aguascalientes, Ags., México",
+    horarios: "Lunes a Sábado · Urgencias 24/7",
+    mapsEmbed: "",
+  },
+
+  ecosystem: {
+    canem: {
+      name: "CANEM Hospital Veterinario",
+      role: "Atención Médica, Quirófano, Hospitalización y Urgencias",
+      location: "Avenida Convención de 1914 Norte #1506, Aguascalientes",
+    },
+    mundoAparte: {
+      name: "Mundo Aparte",
+      role: "Franquicia Líder Mundial en Fisioterapia & Rehabilitación",
+      specialty: "Hidroterapia, Electroestimulación, Terapia Láser y Movilidad",
+    },
+    protesis: {
+      name: "Unidad de Prótesis & Biomecánica",
+      role: "Dispositivos Adaptativos y Ortesis a Medida",
+      specialty: "Recuperación de extremidades y soporte ortopédico avanzado",
+    },
   },
 
   social: {
@@ -29,16 +47,15 @@ export const siteConfig = {
 };
 
 export const nav = [
-  { href: "/", label: "Inicio" },
-  { href: "/sobre", label: "Sobre Fernando" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/herramientas", label: "Herramientas" },
-  { href: "/casos", label: "Casos" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "#sobre-fernando", label: "Dr. Fernando" },
+  { href: "#ecosistema", label: "Ecosistema Clínico" },
+  { href: "#canem-hospital", label: "CANEM Hospital" },
+  { href: "#mundo-aparte", label: "Mundo Aparte" },
+  { href: "#herramientas", label: "Herramientas de Salud" },
+  { href: "#contacto", label: "Contacto" },
 ];
 
 export function whatsappLink(mensaje: string): string {
-  const numero = siteConfig.contact.whatsapp.replace(/\D/g, "") || "0000000000";
+  const numero = siteConfig.contact.whatsapp.replace(/\D/g, "") || "5214490000000";
   return `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 }

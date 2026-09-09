@@ -126,7 +126,7 @@ export function Hero() {
             className="absolute inset-0 bg-gradient-to-r from-canvas-cream/90 via-canvas-cream/50 via-30% to-transparent to-60% z-10"
           />
 
-          {/* Contenido flotante sobre la imagen — 4 esenciales del skill: H1, subheading, primary CTA, secondary CTA */}
+          {/* Contenido flotante sobre la imagen */}
           <div className="relative z-20 h-full flex items-center lg:min-h-[calc(100vh-72px)]">
             <div className="w-full pl-8 sm:pl-12 lg:pl-20 xl:pl-28 2xl:pl-40 pr-8 py-12 lg:py-16">
               <div className="max-w-3xl">

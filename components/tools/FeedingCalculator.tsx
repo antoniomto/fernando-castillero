@@ -58,10 +58,10 @@ export function FeedingCalculator() {
                 key={s}
                 type="button"
                 onClick={() => setSpecies(s)}
-                className={`rounded-lg border-2 px-4 py-2 text-sm font-medium capitalize transition ${
+                className={`rounded-xl border-2 px-4 py-2.5 text-xs md:text-sm font-bold capitalize transition ${
                   species === s
-                    ? "border-brand-teal bg-brand-teal/10 text-ink"
-                    : "border-ink/15 text-ink-soft hover:border-ink-muted"
+                    ? "border-brand-marine bg-brand-marine-tint text-brand-marine"
+                    : "border-slate-200 text-slate-600 hover:border-slate-300"
                 }`}
               >
                 {s}
@@ -71,7 +71,7 @@ export function FeedingCalculator() {
         </div>
 
         <div>
-          <label htmlFor="weight" className="label">Peso (kg)</label>
+          <label htmlFor="weight" className="label">Peso Actual (kg)</label>
           <input
             id="weight"
             type="number"
@@ -80,32 +80,32 @@ export function FeedingCalculator() {
             step="0.1"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
-            placeholder="Ej: 15"
+            placeholder="Ej: 14.5"
             className="input"
           />
         </div>
 
         <div>
-          <label className="label">Edad</label>
+          <label className="label">Etapa de Vida</label>
           <select value={age} onChange={(e) => setAge(e.target.value as Age)} className="input">
-            <option value="cachorro">Cachorro / Junior (menos de 1 año)</option>
-            <option value="adulto">Adulto</option>
-            <option value="senior">Senior (más de 7 años)</option>
+            <option value="cachorro">Cachorro / En crecimiento (&lt; 1 año)</option>
+            <option value="adulto">Adulto (1 a 7 años)</option>
+            <option value="senior">Senior / Geriátrico (&gt; 7 años)</option>
           </select>
         </div>
 
         <div>
-          <label className="label">Nivel de actividad</label>
+          <label className="label">Nivel de Actividad Diaria</label>
           <div className="grid grid-cols-3 gap-2">
             {(["bajo", "medio", "alto"] as Activity[]).map((a) => (
               <button
                 key={a}
                 type="button"
                 onClick={() => setActivity(a)}
-                className={`rounded-lg border-2 px-3 py-2 text-sm font-medium capitalize transition ${
+                className={`rounded-xl border-2 px-3 py-2 text-xs font-bold capitalize transition ${
                   activity === a
-                    ? "border-brand-teal bg-brand-teal/10 text-ink"
-                    : "border-ink/15 text-ink-soft hover:border-ink-muted"
+                    ? "border-brand-marine bg-brand-marine-tint text-brand-marine"
+                    : "border-slate-200 text-slate-600 hover:border-slate-300"
                 }`}
               >
                 {a}
@@ -115,55 +115,66 @@ export function FeedingCalculator() {
         </div>
 
         <div>
-          <label className="label">Estado</label>
+          <label className="label">Condición Corporal</label>
           <select value={status} onChange={(e) => setStatus(e.target.value as Status)} className="input">
-            <option value="normal">Normal</option>
-            <option value="esterilizado">Esterilizado / castrado</option>
-            <option value="obesidad">Con sobrepeso (plan de descenso)</option>
+            <option value="normal">Peso Óptimo / Normal</option>
+            <option value="esterilizado">Esterilizado / Castrado</option>
+            <option value="obesidad">Con Sobrepeso (Plan de Reducción)</option>
           </select>
         </div>
       </form>
 
-      <div className="card bg-brand-teal text-white border-brand-teal">
-        <span className="text-xs uppercase tracking-widest text-brand-teal">Resultado</span>
-        {result ? (
-          <>
-            <div className="mt-4 space-y-4">
+      <div className="card bg-slate-900 text-white border-slate-800 flex flex-col justify-between shadow-xl">
+        <div>
+          <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-3">
+            <span className="text-[11px] uppercase tracking-wider text-emerald-400 font-bold">
+              Resultado Orientativo (WSAVA)
+            </span>
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          </div>
+
+          {result ? (
+            <div className="mt-6 space-y-6">
               <div>
-                <div className="text-4xl font-display text-brand-teal">{result.kcal}</div>
-                <div className="text-sm text-white/70">kcal por día</div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <div className="text-2xl font-display">{result.grams} g</div>
-                  <div className="text-xs text-white/60">alimento seco premium/día</div>
+                <div className="text-5xl font-extrabold text-white font-display">
+                  {result.kcal} <span className="text-xl font-normal text-slate-400">kcal/día</span>
                 </div>
-                <div>
-                  <div className="text-2xl font-display">{result.meals}</div>
-                  <div className="text-xs text-white/60">comidas por día</div>
+                <div className="text-xs text-slate-400 mt-1">Requerimiento energético estimado</div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="rounded-2xl bg-white/5 border border-white/10 p-3.5">
+                  <div className="text-2xl font-bold text-emerald-300">{result.grams} g</div>
+                  <div className="text-[11px] text-slate-400">Croquetas secas / día</div>
+                </div>
+                <div className="rounded-2xl bg-white/5 border border-white/10 p-3.5">
+                  <div className="text-2xl font-bold text-white">{result.meals}</div>
+                  <div className="text-[11px] text-slate-400">Tomas recomendadas</div>
                 </div>
               </div>
-              <p className="text-xs text-white/60 pt-3 border-t border-white/20/10">
-                Cálculo basado en RER ({result.rer} kcal) × factor MER (WSAVA). Es una estimación
-                orientativa. La densidad calórica real depende de cada marca de alimento.
+
+              <p className="text-[11px] text-slate-400 pt-3 border-t border-white/10 leading-relaxed">
+                Cálculo basado en RER ({result.rer} kcal) × factor MER. La ración exacta varía según la densidad calórica del alimento comercial.
               </p>
             </div>
+          ) : (
+            <div className="py-12 text-center text-slate-400 text-sm">
+              Introduce el peso en kg para calcular la ración diaria recomendada.
+            </div>
+          )}
+        </div>
 
-            <a
-              href={whatsappLink(
-                `Hola Fernando, usé la calculadora de alimentación: mi ${species} de ${weight}kg necesitaría ${result.kcal} kcal/día. Quería consultarte por un plan personalizado.`
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold w-full mt-6 text-sm"
-            >
-              Consultar plan personalizado
-            </a>
-          </>
-        ) : (
-          <p className="text-white/60 text-sm mt-4">
-            Completá el peso y elegí las opciones para ver el resultado.
-          </p>
+        {result && (
+          <a
+            href={whatsappLink(
+              `Hola Dr. Fernando, utilicé la calculadora de nutrición: mi ${species} de ${weight}kg requiere unas ${result.kcal} kcal/día. Me gustaría asesoría nutricional o de control de peso.`
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary w-full mt-6 text-xs md:text-sm py-3"
+          >
+            Consultar con el Dr. Fernando por WhatsApp
+          </a>
         )}
       </div>
     </div>

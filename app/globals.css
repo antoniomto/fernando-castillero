@@ -3,20 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --ink: #0F1A1E;
-  --ink-soft: #5A6668;
-  --ink-muted: #8B9294;
+  --ink: #0C1A24;
+  --ink-soft: #475569;
+  --ink-muted: #94A3B8;
   --canvas: #FFFFFF;
-  --canvas-soft: #FAF8F3;
-  --canvas-cream: #F6F3D4;
-  --teal: #054D5E;
-  --teal-2: #0A6478;
-  --teal-dark: #023844;
-  --teal-tint: #E4EEF0;
-  --gold: #A9A478;
-  --gold-2: #C1BC94;
-  --gold-dark: #88835F;
-  --gold-tint: #F0EED6;
+  --canvas-soft: #F8FAFC;
+  --canvas-subtle: #F1F5F9;
+  --canvas-surface: #FAFCFD;
+  --teal: #0E4A56;
+  --teal-2: #093740;
+  --teal-dark: #06252C;
+  --teal-tint: #E8F4F7;
+  --emerald: #0D9488;
+  --emerald-tint: #ECFDF5;
+  --coral: #E05D38;
+  --coral-2: #C94D2A;
+  --coral-dark: #B03E1D;
+  --gold: #0D9488;
+  --gold-2: #10B981;
+  --gold-dark: #047857;
+  --gold-tint: #ECFDF5;
 }
 
 @layer base {
@@ -38,11 +44,11 @@
   }
 
   h1 {
-    @apply text-[2.75rem] md:text-[5rem] lg:text-[6.5rem] font-medium leading-[0.98];
-    letter-spacing: -0.035em;
+    @apply text-[2.75rem] md:text-[4.5rem] lg:text-[5.5rem] font-medium leading-[1.02];
+    letter-spacing: -0.03em;
   }
-  h2 { @apply text-[2rem] md:text-[3.5rem] font-medium leading-[1.02]; letter-spacing: -0.025em; }
-  h3 { @apply text-2xl md:text-[2rem] font-semibold leading-tight; }
+  h2 { @apply text-[2rem] md:text-[3.25rem] font-medium leading-[1.06]; letter-spacing: -0.025em; }
+  h3 { @apply text-2xl md:text-[1.85rem] font-semibold leading-snug; }
   h4 { @apply text-xl md:text-2xl font-semibold; }
 
   ::selection { background: var(--teal); color: white; }
@@ -51,58 +57,61 @@
 @layer components {
   .container-tight { @apply container max-w-6xl; }
 
-  /* CLAYMORPHISM buttons — chunky, tactile, soft press */
+  /* High-End Precision Buttons */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-3.5 font-semibold text-[0.95rem] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 active:translate-y-[1px];
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 font-semibold text-[0.95rem] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98];
   }
 
   .btn-primary {
     @apply btn bg-brand-coral text-white hover:bg-brand-coral-2 focus:ring-brand-coral;
-    box-shadow: 0 6px 0 -1px #C74A2E, 0 10px 24px -8px rgba(199,74,46,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+    box-shadow: 0 4px 18px -2px rgba(224, 93, 56, 0.38), inset 0 1px 0 rgba(255,255,255,0.25);
   }
-  .btn-primary:hover { box-shadow: 0 8px 0 -1px #C74A2E, 0 14px 28px -8px rgba(199,74,46,0.45), inset 0 1px 0 rgba(255,255,255,0.25); transform: translateY(-2px); }
-  .btn-primary:active { box-shadow: 0 2px 0 -1px #C74A2E, 0 4px 10px -4px rgba(199,74,46,0.35); transform: translateY(2px); }
+  .btn-primary:hover {
+    box-shadow: 0 8px 24px -2px rgba(224, 93, 56, 0.48), inset 0 1px 0 rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
 
-  /* .btn-gold used on dark bg — same coral for CTA unity */
   .btn-gold {
     @apply btn bg-brand-coral text-white hover:bg-brand-coral-2 focus:ring-brand-coral;
-    box-shadow: 0 6px 0 -1px #C74A2E, 0 10px 24px -8px rgba(199,74,46,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+    box-shadow: 0 4px 18px -2px rgba(224, 93, 56, 0.38), inset 0 1px 0 rgba(255,255,255,0.25);
   }
-  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 0 -1px #C74A2E, 0 14px 28px -8px rgba(199,74,46,0.45), inset 0 1px 0 rgba(255,255,255,0.25); }
-  .btn-gold:active { transform: translateY(2px); box-shadow: 0 2px 0 -1px #C74A2E, 0 4px 10px -4px rgba(199,74,46,0.35); }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -2px rgba(224, 93, 56, 0.48);
+  }
 
   .btn-dark {
-    @apply btn bg-ink text-white hover:bg-ink/90 focus:ring-ink;
-    box-shadow: 0 6px 0 -1px #000, 0 10px 24px -8px rgba(0,0,0,0.35);
+    @apply btn bg-ink text-white hover:bg-brand-marine focus:ring-ink;
+    box-shadow: 0 4px 16px -2px rgba(12, 26, 36, 0.25);
   }
   .btn-dark:hover { transform: translateY(-2px); }
-  .btn-dark:active { transform: translateY(2px); box-shadow: 0 2px 0 -1px #000; }
 
   .btn-outline {
-    @apply btn border-[3px] border-brand-teal text-brand-teal bg-white hover:bg-brand-teal hover:text-white focus:ring-brand-teal;
+    @apply btn border-2 border-brand-marine/30 text-brand-marine bg-white hover:bg-brand-marine hover:text-white focus:ring-brand-marine;
   }
 
   .btn-outline-light {
-    @apply btn border-[3px] border-white/50 text-white hover:bg-white hover:text-brand-teal focus:ring-white;
+    @apply btn border-2 border-white/40 text-white hover:bg-white hover:text-brand-marine focus:ring-white;
   }
 
-  .section { @apply py-20 md:py-32; }
+  .section { @apply py-20 md:py-28; }
 
   .eyebrow {
-    @apply inline-block text-xs md:text-sm uppercase tracking-[0.22em] text-brand-gold-dark font-semibold;
+    @apply inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold bg-brand-marine-tint text-brand-marine border border-brand-marine/10;
   }
 
-  /* Claymorphism card: chunky, doble sombra, soft feel */
+  /* Double-Bezel High-End Medical Card Architecture */
   .card {
-    @apply bg-white rounded-[1.75rem] border-2 border-ink/[0.06] p-6 md:p-8 transition-all;
-    box-shadow: 0 4px 0 -1px rgba(15,26,30,0.06), 0 12px 30px -12px rgba(15,26,30,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+    @apply bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 transition-all duration-300;
+    box-shadow: 0 1px 3px rgba(12, 26, 36, 0.04), 0 10px 24px -10px rgba(12, 26, 36, 0.08);
   }
   .card:hover {
-    box-shadow: 0 6px 0 -1px rgba(15,26,30,0.08), 0 18px 40px -15px rgba(5,77,94,0.15), inset 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 2px 6px rgba(12, 26, 36, 0.06), 0 20px 36px -12px rgba(14, 74, 86, 0.14);
+    border-color: rgba(14, 74, 86, 0.25);
   }
 
   .input {
-    @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-muted focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/25 transition;
+    @apply w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-ink placeholder:text-ink-muted focus:border-brand-marine focus:outline-none focus:ring-2 focus:ring-brand-marine/20 transition;
   }
 
   .label { @apply block text-sm font-medium text-ink mb-2; }

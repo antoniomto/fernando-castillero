@@ -10,41 +10,47 @@ type LogoProps = {
  */
 export function Logo({ className = "", variant = "dark", showWordmark = true }: LogoProps) {
   const isLight = variant === "light";
-  const circleBg = isLight ? "#FFFFFF" : "#054D5E";
-  const dogColor = isLight ? "#054D5E" : "#A9A478";
-  const eye = isLight ? "#054D5E" : "#F6F3D4";
-  const wordmark = isLight ? "#FFFFFF" : "#054D5E";
-  const tagline = isLight ? "#FFFFFF" : "#5A6668";
+  const circleBg = isLight ? "#FFFFFF" : "#0E4A56";
+  const iconColor = isLight ? "#0E4A56" : "#10B981";
+  const wordmark = isLight ? "#FFFFFF" : "#0C1A24";
+  const tagline = isLight ? "#E2E8F0" : "#475569";
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <svg
-        viewBox="0 0 80 80"
-        className="h-11 w-11 md:h-12 md:w-12 shrink-0"
-        aria-label="Mundo à Parte"
-        role="img"
+      <div
+        className="h-10 w-10 md:h-11 md:w-11 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-all"
+        style={{ backgroundColor: circleBg }}
       >
-        <circle cx="40" cy="40" r="38" fill={circleBg} />
-        <path
-          d="M28 52 Q26 44 30 38 Q30 34 34 32 Q36 26 42 28 Q46 26 50 32 Q54 34 54 40 Q56 46 54 54 L52 58 L46 58 L46 54 Q42 56 38 54 L38 58 L30 58 Z M35 34 L32 28 L36 32 Z M45 32 L48 28 L46 34 Z"
-          fill={dogColor}
-        />
-        <circle cx="37" cy="40" r="1.2" fill={eye} />
-      </svg>
+        <svg
+          viewBox="0 0 24 24"
+          className="h-6 w-6"
+          fill="none"
+          stroke={iconColor}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* Caduceus / Veterinary Cross + Paw subtle fusion */}
+          <path d="M12 2v20M8 5h8M7 9h10M6 13h12" opacity="0.3" />
+          <path d="M12 3v18" />
+          <path d="M8 8a4 4 0 0 1 8 0c0 4-8 6-8 10h8" />
+          <circle cx="12" cy="7" r="1.5" fill={iconColor} />
+        </svg>
+      </div>
 
       {showWordmark && (
-        <div className="leading-none">
+        <div className="leading-tight">
           <div
-            className="font-display text-lg md:text-xl tracking-wide font-semibold"
+            className="font-display text-base md:text-lg tracking-tight font-bold"
             style={{ color: wordmark }}
           >
-            MUNDO À PARTE
+            DR. FERNANDO CASTILLERO
           </div>
           <div
-            className="hidden sm:block text-[10px] md:text-xs uppercase tracking-[0.16em] mt-1 font-medium"
-            style={{ color: tagline, opacity: isLight ? 0.85 : 0.7 }}
+            className="text-[10px] md:text-[11px] uppercase tracking-[0.14em] font-medium"
+            style={{ color: tagline }}
           >
-            Fisioterapia Veterinária
+            Medicina Veterinaria & Rehabilitación
           </div>
         </div>
       )}
