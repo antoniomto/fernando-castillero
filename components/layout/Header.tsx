@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "../Logo";
 import { nav, whatsappLink } from "@/lib/site-config";
@@ -8,6 +9,7 @@ import { nav, whatsappLink } from "@/lib/site-config";
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     let ticking = false;
@@ -22,6 +24,21 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setOpen(false);
+
+    // If on homepage and clicking a hash link like "/#ecosistema", scroll smoothly in-place
+    if (href.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const targetId = href.replace("/#", "");
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
 
   const dark = scrolled;
 
@@ -40,17 +57,27 @@ export function Header() {
         </Link>
 
         <nav className="hidden xl:flex items-center gap-7">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`text-sm font-medium transition-colors ${
-                dark ? "text-slate-100 hover:text-white" : "text-slate-600 hover:text-brand-marine"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+          {nav.map((item) => {
+            const isExactActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`text-sm font-medium transition-colors ${
+                  isExactActive
+                    ? dark
+                      ? "text-emerald-300 font-bold"
+                      : "text-brand-marine font-bold"
+                    : dark
+                    ? "text-slate-100 hover:text-white"
+                    : "text-slate-600 hover:text-brand-marine"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
@@ -88,16 +115,16 @@ export function Header() {
         >
           <div className="flex flex-col gap-2">
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className={`py-2 text-sm font-medium transition ${
                   dark ? "text-slate-200 hover:text-white" : "text-slate-700 hover:text-brand-marine"
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <a
               href={whatsappLink("Hola Dr. Fernando, me gustaría agendar una consulta.")}

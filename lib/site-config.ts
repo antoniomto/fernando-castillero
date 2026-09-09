@@ -47,10 +47,10 @@ export const siteConfig = {
 };
 
 export const nav = [
-  { href: "#ecosistema", label: "Servicios" },
-  { href: "#sobre-fernando", label: "Dr. Fernando" },
-  { href: "#herramientas", label: "Herramientas" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/#ecosistema", label: "Servicios" },
+  { href: "/#sobre-fernando", label: "Dr. Fernando" },
+  { href: "/herramientas", label: "Herramientas" },
+  { href: "/#contacto", label: "Contacto" },
 ];
 
 export function whatsappLink(mensaje: string): string {
