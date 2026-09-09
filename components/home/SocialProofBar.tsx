@@ -1,10 +1,10 @@
 import { Reveal } from "../Reveal";
 
 const stats = [
-  { number: "+10 Años", label: "Trayectoria Médica y Quirúrgica" },
-  { number: "CANEM", label: "Sede Hospitalaria Aguascalientes" },
-  { number: "Mundo Aparte", label: "Franquicia Líder en Rehabilitación" },
-  { number: "100%", label: "Atención y Biomecánica Personalizada" },
+  { number: "CANEM", label: "Hospital Veterinario · Aguascalientes" },
+  { number: "Mundo Aparte", label: "Franquicia Internacional de Rehabilitación" },
+  { number: "Prótesis", label: "Biomecánica y Dispositivos a Medida" },
+  { number: "24/7", label: "Urgencias y Hospitalización" },
 ];
 
 export function SocialProofBar() {

@@ -47,11 +47,9 @@ export const siteConfig = {
 };
 
 export const nav = [
+  { href: "#ecosistema", label: "Servicios" },
   { href: "#sobre-fernando", label: "Dr. Fernando" },
-  { href: "#ecosistema", label: "Ecosistema Clínico" },
-  { href: "#canem-hospital", label: "CANEM Hospital" },
-  { href: "#mundo-aparte", label: "Mundo Aparte" },
-  { href: "#herramientas", label: "Herramientas de Salud" },
+  { href: "#herramientas", label: "Herramientas" },
   { href: "#contacto", label: "Contacto" },
 ];
 

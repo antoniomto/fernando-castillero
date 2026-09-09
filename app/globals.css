@@ -19,10 +19,10 @@
   --coral: #E05D38;
   --coral-2: #C94D2A;
   --coral-dark: #B03E1D;
-  --gold: #0D9488;
-  --gold-2: #10B981;
-  --gold-dark: #047857;
-  --gold-tint: #ECFDF5;
+  --accent-emerald: #0D9488;
+  --accent-emerald-2: #10B981;
+  --accent-emerald-dark: #047857;
+  --accent-emerald-tint: #ECFDF5;
 }
 
 @layer base {
@@ -164,7 +164,7 @@
   .blob-frame.blob-shape-3 > .blob-content {
     border-radius: 55% 45% 65% 35% / 40% 65% 35% 60%;
   }
-  .blob-frame.blob-gold > .blob-shape { background-color: var(--gold); }
+  .blob-frame.blob-gold > .blob-shape { background-color: var(--accent-emerald); }
   .blob-frame.blob-teal > .blob-shape { background-color: var(--teal); }
 
   .marquee {

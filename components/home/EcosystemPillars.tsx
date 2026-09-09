@@ -68,7 +68,7 @@ const pillars: PillarData[] = [
     ],
     ctaText: "Ver programas de fisioterapia",
     ctaAction: "#mundo-aparte",
-    stat: { value: "+1,000", label: "Casos de movilidad recuperada" },
+    stat: { value: "Global", label: "Red internacional de rehabilitación" },
     gradient: "from-emerald-600/10 via-transparent to-transparent",
   },
   {

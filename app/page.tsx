@@ -4,13 +4,9 @@ import { SocialProofBar } from "@/components/home/SocialProofBar";
 import { EcosystemPillars } from "@/components/home/EcosystemPillars";
 import { ProblemSection } from "@/components/home/ProblemSection";
 import { FernandoTimeline } from "@/components/home/FernandoTimeline";
-import { CanemLocationCard } from "@/components/home/CanemLocationCard";
 import { MobilityScreener } from "@/components/tools/MobilityScreener";
 import { EmergencyTriage } from "@/components/tools/EmergencyTriage";
 import { FeedingCalculator } from "@/components/tools/FeedingCalculator";
-import { PetBudget } from "@/components/tools/PetBudget";
-import { GalleryMosaic } from "@/components/home/GalleryMosaic";
-import { Testimonials } from "@/components/home/Testimonials";
 import { whatsappLink } from "@/lib/site-config";
 
 export default function HomePage() {
@@ -18,8 +14,8 @@ export default function HomePage() {
     <>
       <Hero />
       <SocialProofBar />
-      <EcosystemPillars />
       <ProblemSection />
+      <EcosystemPillars />
 
       {/* SECCIÓN INTERACTIVA: HERRAMIENTAS DE SALUD */}
       <section id="herramientas" className="section bg-slate-50 relative overflow-hidden">
@@ -83,9 +79,6 @@ export default function HomePage() {
       </section>
 
       <FernandoTimeline />
-      <CanemLocationCard />
-      <GalleryMosaic />
-      <Testimonials />
 
       {/* CTA FINAL */}
       <section id="contacto" className="relative bg-brand-marine text-white overflow-hidden">

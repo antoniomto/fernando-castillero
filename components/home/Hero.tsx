@@ -171,12 +171,10 @@ export function Hero() {
 
                 <Reveal delay={3}>
                   <div className="mt-6 flex items-center gap-3 text-sm text-ink-soft">
-                    <span className="flex items-center gap-1 text-brand-coral" aria-label="5 estrellas">
-                      {"★★★★★".split("").map((s, i) => <span key={i} className="text-base leading-none">{s}</span>)}
-                    </span>
-                    <span className="font-medium text-ink">5.0</span>
-                    <span className="text-ink-muted">·</span>
-                    <span><strong className="font-semibold text-ink">+200 familias</strong> confiaron su mascota</span>
+                    <svg className="h-4 w-4 text-brand-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span>CANEM Hospital · Mundo Aparte · Prótesis a medida</span>
                   </div>
                 </Reveal>
               </div>
