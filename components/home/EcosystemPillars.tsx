@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Reveal } from "../Reveal";
 import { ModalDrawer } from "@/components/ui/ModalDrawer";
 import { EmergencyTriage } from "@/components/tools/EmergencyTriage";
@@ -20,6 +21,8 @@ interface PillarData {
   dedicatedHref: string;
   stat: { value: string; label: string };
   gradient: string;
+  image: string;
+  imageCaption: string;
 }
 
 const pillars: PillarData[] = [
@@ -48,6 +51,8 @@ const pillars: PillarData[] = [
     dedicatedHref: "/herramientas/triage-urgencias",
     stat: { value: "24/7", label: "Atención y quirófano especializado" },
     gradient: "from-blue-600/10 via-transparent to-transparent",
+    image: "/images/clinical/recuperacion-cirugia-gato.jpg",
+    imageCaption: "Hospitalización y recuperación en CANEM",
   },
   {
     id: "mundo-aparte",
@@ -73,6 +78,8 @@ const pillars: PillarData[] = [
     dedicatedHref: "/herramientas/explorador-terapias",
     stat: { value: "Global", label: "Red internacional de rehabilitación" },
     gradient: "from-emerald-600/10 via-transparent to-transparent",
+    image: "/images/clinical/laser-pastor-aleman.jpg",
+    imageCaption: "Fotobiomodulación láser con gafas de protección",
   },
   {
     id: "protesis",
@@ -98,6 +105,8 @@ const pillars: PillarData[] = [
     dedicatedHref: "/herramientas/guia-protesis",
     stat: { value: "100%", label: "Diseño anatómico personalizado" },
     gradient: "from-amber-600/10 via-transparent to-transparent",
+    image: "/images/clinical/soporte-post-quirurgico-perro.jpg",
+    imageCaption: "Soporte postural y adaptación biomecánica",
   },
 ];
 
@@ -159,6 +168,22 @@ export function EcosystemPillars() {
                   <p className="text-sm font-medium text-brand-marine mb-4">
                     {p.subtitle}
                   </p>
+
+                  {/* Imagen clínica real del pilar */}
+                  <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 border border-slate-200/80 shadow-inner bg-slate-100 group-hover:shadow-md transition-shadow">
+                    <Image
+                      src={p.image}
+                      alt={p.imageCaption}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                    <span className="absolute bottom-2 left-2.5 right-2.5 text-[11px] font-medium text-white/95 leading-tight">
+                      {p.imageCaption}
+                    </span>
+                  </div>
+
                   <p className="text-xs md:text-sm text-slate-600 leading-relaxed mb-6">
                     {p.description}
                   </p>

@@ -5,6 +5,8 @@ export type Service = {
   description: string;
   benefits: string[];
   icon: "waves" | "laser" | "hand" | "surgery" | "elder" | "sport";
+  image: string;
+  imageCaption: string;
 };
 
 export const services: Service[] = [
@@ -20,70 +22,82 @@ export const services: Service[] = [
       "Ideal para post-operatorio y obesidad",
     ],
     icon: "waves",
+    image: "/images/gallery-hydro.jpg",
+    imageCaption: "Sesión de hidroterapia con flotabilidad controlada",
   },
   {
     slug: "laserterapia",
-    title: "Laserterapia",
-    short: "Láser de baja intensidad para reducir dolor e inflamación.",
+    title: "Laserterapia de Alta Intensidad",
+    short: "Fotobiomodulación infrarroja para dolor agudo y regeneración celular.",
     description:
-      "Estimula la regeneración celular, alivia dolor crónico y acelera la cicatrización. Aplicación no invasiva, sin efectos secundarios, ideal para artrosis, tendinitis y heridas.",
+      "Estimula la producción mitocondrial de ATP, alivia dolor crónico y acelera la cicatrización profunda. Aplicación indolora y segura con gafas protectoras Doggles, ideal para artrosis, displasia y post-quirúrgicos.",
     benefits: [
-      "Alivio de dolor sin medicación",
-      "Acelera cicatrización",
-      "Sesiones cortas y bien toleradas",
+      "Alivio de dolor sin toxicidad medicamentosa",
+      "Acelera cicatrización y regeneración tisular",
+      "Sesiones rápidas, no invasivas y bien toleradas",
     ],
     icon: "laser",
+    image: "/images/clinical/laser-pastor-aleman.jpg",
+    imageCaption: "Fotobiomodulación con protección ocular en Mundo Aparte",
   },
   {
     slug: "masaje-terapeutico",
-    title: "Masaje terapéutico",
-    short: "Terapia manual para relajar musculatura y mejorar circulación.",
+    title: "Terapia Manual & Descompresión Miofascial",
+    short: "Técnicas manuales y asistencia articular por personal especializado.",
     description:
-      "Técnicas de masaje adaptadas a cada paciente para liberar contracturas, mejorar drenaje linfático y preparar tejidos para el ejercicio terapéutico.",
+      "Maniobras clínicas adaptadas a cada paciente para liberar contracturas compensatorias, facilitar el drenaje linfático y devolver elasticidad a tejidos rígidos por inactividad o cojera.",
     benefits: [
-      "Alivio muscular inmediato",
-      "Complemento ideal a otras terapias",
-      "Reduce ansiedad y estrés",
+      "Alivio muscular y fascial inmediato",
+      "Preparación óptima para ejercicios activos",
+      "Reduce ansiedad y estrés hospitalario",
     ],
     icon: "hand",
+    image: "/images/clinical/equipo-clinico-yorkie.jpg",
+    imageCaption: "Atención individualizada por fisioterapeutas del centro",
   },
   {
     slug: "rehabilitacion-post-quirurgica",
-    title: "Rehabilitación post-quirúrgica",
-    short: "Protocolo específico según el tipo de cirugía.",
+    title: "Rehabilitación Post-Quirúrgica Ortopédica",
+    short: "Protocolos guiados para TPLO, displasia, fracturas y columna.",
     description:
-      "Programa personalizado para cirugías ortopédicas (TPLO, TTA, hernia discal, fracturas). Restablece movilidad, previene atrofia muscular y acorta tiempos de recuperación.",
+      "Plan médico personalizado según el tipo de intervención. Restablece el rango de movimiento articular, previene atrofia por desuso y reeduca la marcha con soportes y arneses ergonómicos.",
     benefits: [
-      "Recuperación más rápida y segura",
-      "Menor atrofia muscular",
-      "Prevención de recaídas",
+      "Marcha segura desde las primeras semanas",
+      "Preservación de masa muscular magra",
+      "Disminución drástica de complicaciones post-operatorias",
     ],
     icon: "surgery",
+    image: "/images/clinical/soporte-post-quirurgico-perro.jpg",
+    imageCaption: "Recuperación y bipedestación asistida tras cirugía",
   },
   {
     slug: "geriatria",
-    title: "Fisioterapia geriátrica",
-    short: "Mejora calidad de vida en mascotas mayores.",
+    title: "Magnetoterapia & Atención Geriátrica",
+    short: "Campos magnéticos pulsátiles indoloros para artrosis y rigidez.",
     description:
-      "Manejo integral de artrosis, displasias y pérdida de movilidad asociadas a la edad. Ejercicio adaptado, terapia manual y láser para mantener independencia y bienestar.",
+      "El solenoide terapéutico genera ondas magnéticas de baja frecuencia que estimulan la regeneración del cartílago y alivian la inflamación en columna y articulaciones sin manipular al paciente.",
     benefits: [
-      "Más movilidad y menos dolor",
-      "Mejora ánimo y calidad de vida",
-      "Reduce necesidad de medicación",
+      "100% indoloro: el paciente descansa o duerme durante la sesión",
+      "Mayor agilidad y alivio de rigidez matinal",
+      "Disminución del consumo diario de antiinflamatorios orales",
     ],
     icon: "elder",
+    image: "/images/clinical/magnetoterapia-gato-evet.jpg",
+    imageCaption: "Paciente felino descansando en solenoide magnético E-VET",
   },
   {
     slug: "deportivos",
-    title: "Rehabilitación deportiva",
-    short: "Prevención y recuperación en perros de trabajo o deporte.",
+    title: "Electroestimulación & Acondicionamiento (TENS / EMS)",
+    short: "Activación neuromuscular para fuerza, reflejos y prevención.",
     description:
-      "Programas de acondicionamiento, prevención de lesiones y recuperación acelerada para perros deportivos (agility, canicross, trabajo).",
+      "Protocolos con equipo digital calibrado para activar fibras musculares atróficas tras reposo forzado o tonificar la musculatura en atletas y perros de trabajo.",
     benefits: [
-      "Menor tasa de lesiones",
-      "Mejor performance",
-      "Recuperación acelerada",
+      "Activación muscular precisa sin impacto articular",
+      "Control de espasmos y reeducación refleja",
+      "Prevención de recaídas y mantenimiento atlético",
     ],
     icon: "sport",
+    image: "/images/clinical/electroterapia-tens-rehabmedic.jpg",
+    imageCaption: "Electroterapia digital RehabMedic aplicada en musculatura",
   },
 ];

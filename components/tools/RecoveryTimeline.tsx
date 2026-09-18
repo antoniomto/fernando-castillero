@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { protocols, getProtocol } from "@/data/recovery-protocols";
 import { whatsappLink } from "@/lib/site-config";
 
@@ -12,21 +13,42 @@ export function RecoveryTimeline() {
 
   return (
     <div>
-      <div className="card mb-8">
-        <label htmlFor="cirugia" className="label">Tipo de cirugía</label>
-        <select
-          id="cirugia"
-          value={slug}
-          onChange={(e) => setSlug(e.target.value)}
-          className="input"
-        >
-          {protocols.map((p) => (
-            <option key={p.slug} value={p.slug}>
-              {p.name}
-            </option>
-          ))}
-        </select>
-        <p className="mt-4 text-sm text-ink-soft">{protocol.summary}</p>
+      <div className="card mb-8 grid gap-6 md:grid-cols-[1fr_260px] items-center">
+        <div>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 inline-block mb-3">
+            Protocolo Hospitalario & Fisioterapia
+          </span>
+          <label htmlFor="cirugia" className="label font-bold text-ink text-base">
+            Selecciona el tipo de cirugía o lesión:
+          </label>
+          <select
+            id="cirugia"
+            value={slug}
+            onChange={(e) => setSlug(e.target.value)}
+            className="input mt-1.5 font-medium"
+          >
+            {protocols.map((p) => (
+              <option key={p.slug} value={p.slug}>
+                {p.name}
+              </option>
+            ))}
+          </select>
+          <p className="mt-3.5 text-sm text-slate-600 leading-relaxed">{protocol.summary}</p>
+        </div>
+
+        <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
+          <Image
+            src="/images/clinical/soporte-post-quirurgico-perro.jpg"
+            alt="Paciente canino en recuperación post-quirúrgica asistida"
+            fill
+            sizes="(max-width: 768px) 100vw, 260px"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+          <span className="absolute bottom-2 left-2.5 right-2.5 text-[11px] font-medium text-white/95 leading-tight">
+            Soporte ortopédico y marcha en clínica
+          </span>
+        </div>
       </div>
 
       <div className="mb-8 flex flex-wrap gap-3 no-print">

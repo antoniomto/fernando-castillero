@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { whatsappLink } from "@/lib/site-config";
 
 interface Therapy {
@@ -16,6 +17,8 @@ interface Therapy {
   duration: string;
   frequency: string;
   contraindications: string;
+  image: string;
+  imageCaption: string;
 }
 
 const therapies: Therapy[] = [
@@ -46,6 +49,8 @@ const therapies: Therapy[] = [
     duration: "20 a 30 minutos",
     frequency: "2 a 3 sesiones semanales según fase",
     contraindications: "Heridas abiertas sin cicatrizar, infecciones cutáneas activas o cardiopatías descompensadas.",
+    image: "/images/gallery-hydro.jpg",
+    imageCaption: "Sesión de hidroterapia con flotabilidad controlada",
   },
   {
     id: "laser",
@@ -75,6 +80,39 @@ const therapies: Therapy[] = [
     duration: "10 a 15 minutos",
     frequency: "2 veces por semana en etapa aguda; mantenimiento mensual",
     contraindications: "Zonas con presencia de tumores o neoplasias malignas activas.",
+    image: "/images/clinical/laser-pastor-aleman.jpg",
+    imageCaption: "Pastor Alemán con gafas Doggles recibiendo láser de alta potencia",
+  },
+  {
+    id: "magneto",
+    name: "Magnetoterapia",
+    tag: "Solenoide E-VET",
+    badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
+    icon: (className = "h-5 w-5") => (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v10M8 12h8" />
+      </svg>
+    ),
+    tagline: "Campos magnéticos pulsátiles indoloros para consolidación ósea y celular.",
+    mechanism:
+      "Genera microcorrientes inducidas a nivel iónico que aceleran la calcificación en fracturas retardadas, reactivan el flujo sanguíneo y desinflaman discos intervertebrales mientras el paciente descansa.",
+    conditions: [
+      "Retardo en consolidación de fracturas y fisuras",
+      "Manejo conservador o post-quirúrgico de hernias de disco",
+      "Artrosis severa en perros seniors y gatos gerontes",
+      "Edemas óseos y procesos inflamatorios crónicos",
+    ],
+    sessionFlow: [
+      { step: "1. Reposo en solenoide", detail: "La mascota se acomoda en la camilla dentro del túnel magnético." },
+      { step: "2. Emisión indolora", detail: "Tratamiento 100% silencioso e indoloro (los pacientes suelen dormirse)." },
+      { step: "3. Estimulación profunda", detail: "Acción celular sin necesidad de inmovilización ni anestesia." },
+    ],
+    duration: "20 a 30 minutos",
+    frequency: "2 a 3 sesiones semanales",
+    contraindications: "Hemorragias activas o pacientes con marcapasos cercanos.",
+    image: "/images/clinical/magnetoterapia-gato-evet.jpg",
+    imageCaption: "Paciente felino descansando plácidamente en solenoide E-VET",
   },
   {
     id: "electro",
@@ -103,10 +141,12 @@ const therapies: Therapy[] = [
     duration: "15 a 20 minutos",
     frequency: "2 a 3 veces por semana",
     contraindications: "Presencia de marcapasos, zonas con implantes metálicos recientes o crisis convulsivas.",
+    image: "/images/clinical/electroterapia-tens-rehabmedic.jpg",
+    imageCaption: "Electroestimulación neuromuscular RehabMedic con electrodos",
   },
   {
     id: "propiocepcion",
-    name: "Cinesiterapia",
+    name: "Cinesiterapia & Movilidad",
     tag: "Reeducación Neuromotora",
     badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
     icon: (className = "h-5 w-5") => (
@@ -132,6 +172,8 @@ const therapies: Therapy[] = [
     duration: "25 a 30 minutos",
     frequency: "1 a 2 veces por semana combinada con rutina en casa",
     contraindications: "Inestabilidad ortopédica aguda sin fijación previa.",
+    image: "/images/clinical/equipo-clinico-yorkie.jpg",
+    imageCaption: "Asistencia motora guiada por el equipo de fisioterapia",
   },
   {
     id: "termoterapia",
@@ -158,8 +200,10 @@ const therapies: Therapy[] = [
       { step: "3. Estiramientos", detail: "Movilidad pasiva controlada dentro del rango fisiológico sin dolor." },
     ],
     duration: "15 a 20 minutos",
-    frequency: "Como fase preparatoria en cada visita",
-    contraindications: "Inflamación aguda temprana (< 48h tras traumatismo) o fiebre.",
+    frequency: "2 a 3 veces por semana como coadyuvante",
+    contraindications: "Inflamación o hemorragia aguda en las primeras 48-72 horas.",
+    image: "/images/clinical/terapia-chihuahua-laser.jpg",
+    imageCaption: "Aplicación y acondicionamiento muscular en paciente pequeño",
   },
 ];
 
@@ -278,6 +322,21 @@ export function TherapyExplorer() {
           {/* Right / Session Flow & Parameters */}
           <div className="lg:col-span-5 rounded-2xl bg-slate-900 text-white p-5 sm:p-6 flex flex-col justify-between shadow-xl">
             <div className="space-y-4">
+              {/* Imagen clínica real del procedimiento */}
+              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-white/10 shadow-md bg-slate-800">
+                <Image
+                  src={current.image}
+                  alt={current.imageCaption}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 360px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-90" />
+                <span className="absolute bottom-2 left-2.5 right-2.5 text-[11px] font-medium text-emerald-300 leading-tight">
+                  {current.imageCaption}
+                </span>
+              </div>
+
               <div className="border-b border-white/10 pb-3">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">
                   Protocolo de Atención
